@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cancan's Calm Corner 🎀</title>
+<meta name="description" content="A cozy little space to breathe, color, and feel boosted. Made with love by Cancan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plum-deep: #160b26;
+    --plum: #221238;
+    --plum-soft: #2e1a4d;
+    --plum-card: #281545;
+    --gold: #e6c87a;
+    --gold-soft: #d4b76a;
+    --gold-glow: rgba(230, 200, 122, 0.45);
+    --lilac: #c9b3ec;
+    --lilac-soft: #a98fd6;
+    --cream: #f6efff;
+    --rose: #e8a0bf;
+    --radius: 22px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--cream);
+    background: radial-gradient(ellipse at 50% -10%, var(--plum-soft) 0%, var(--plum) 45%, var(--plum-deep) 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .display { font-family: 'Playfair Display', serif; }
+
+  /* ---------- drifting sparkles ---------- */
+  #sparkles {
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .sparkle {
+    position: absolute;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0;
+    animation: drift linear infinite;
+  }
+  @keyframes drift {
+    0%   { transform: translateY(-12px) scale(0.6); opacity: 0; }
+    12%  { opacity: var(--spark-op, 0.55); }
+    85%  { opacity: var(--spark-op, 0.55); }
+    100% { transform: translateY(105vh) scale(1); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sparkle { display: none; }
+    * { animation-duration: 0.001s !important; transition-duration: 0.001s !important; }
+  }
+
+  /* ---------- layout ---------- */
+  .wrap {
+    position: relative; z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 32px 20px 60px;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+  }
+
+  header { text-align: center; margin-bottom: 8px; }
+  .brand {
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    color: var(--gold);
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 28px rgba(230, 200, 122, 0.25);
+  }
+  .brand .bow { font-size: 0.8em; }
+  .tagline {
+    color: var(--lilac);
+    font-weight: 300;
+    font-size: 1.02rem;
+    margin-top: 10px;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .view { display: none; animation: fadeUp 0.5s ease both; flex: 1; }
+  .view.active { display: block; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---------- home doors ---------- */
+  .ask {
+    text-align: center;
+    color: var(--cream);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.3rem, 4vw, 1.7rem);
+    margin: 40px 0 30px;
+    font-weight: 500;
+  }
+  .doors {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .door {
+    background: linear-gradient(160deg, var(--plum-card), var(--plum-soft));
+    border: 1px solid rgba(230, 200, 122, 0.22);
+    border-radius: var(--radius);
+    padding: 34px 24px 30px;
+    text-align: center;
+    cursor: pointer;
+    color: var(--cream);
+    font-family: 'Poppins', sans-serif;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+  }
+  .door:hover, .door:focus-visible {
+    transform: translateY(-6px);
+    border-color: var(--gold);
+    box-shadow: 0 14px 38px rgba(0,0,0,0.45), 0 0 24px var(--gold-glow);
+    outline: none;
+  }
+  .door:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .door .icon { font-size: 2.6rem; display: block; margin-bottom: 14px; }
+  .door h2 { color: var(--gold); font-size: 1.5rem; margin-bottom: 8px; }
+  .door p { color: var(--lilac); font-weight: 300; font-size: 0.92rem; line-height: 1.5; }
+
+  /* ---------- back button + section headers ---------- */
+  .back {
+    background: none;
+    border: 1px solid rgba(201, 179, 236, 0.35);
+    color: var(--lilac);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    padding: 9px 18px;
+    border-radius: 999px;
+    cursor: pointer;
+    margin: 18px 0 6px;
+    transition: all 0.2s ease;
+  }
+  .back:hover, .back:focus-visible { border-color: var(--gold); color: var(--gold); outline: none; }
+
+  .section-title {
+    text-align: center;
+    color: var(--gold);
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    margin: 10px 0 6px;
+  }
+  .section-sub {
+    text-align: center;
+    color: var(--lilac);
+    font-weight: 300;
+    margin-bottom: 26px;
+    font-size: 0.98rem;
+  }
+
+  /* ---------- breathe ---------- */
+  .orb-stage {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 18px 0 6px;
+  }
+  .orb {
+    width: 190px; height: 190px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #f8e8bd 0%, var(--gold) 35%, #8a6fc2 80%, var(--plum-soft) 100%);
+    box-shadow: 0 0 60px var(--gold-glow), 0 0 120px rgba(169, 143, 214, 0.35);
+    transform: scale(0.72);
+    transition: transform 4s cubic-bezier(0.4, 0, 0.4, 1), box-shadow 4s ease;
+  }
+  .orb.inhale { transform: scale(1.12); box-shadow: 0 0 90px var(--gold-glow), 0 0 160px rgba(169,143,214,0.5); }
+  .orb.exhale { transform: scale(0.72); }
+  .breath-cue {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--cream);
+    margin-top: 30px;
+    min-height: 2.2rem;
+    text-align: center;
+  }
+  .breath-count { color: var(--lilac-soft); font-size: 0.95rem; margin-top: 6px; min-height: 1.3rem; }
+
+  .pill-btn {
+    background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+    color: var(--plum-deep);
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 13px 34px;
+    border-radius: 999px;
+    cursor: pointer;
+    margin-top: 26px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  }
+  .pill-btn:hover, .pill-btn:focus-visible { transform: translateY(-2px); box-shadow: 0 8px 26px var(--gold-glow); outline: none; }
+  .pill-btn.ghost {
+    background: none;
+    color: var(--lilac);
+    border: 1px solid rgba(201,179,236,0.4);
+    font-weight: 400;
+  }
+  .pill-btn.ghost:hover { color: var(--gold); border-color: var(--gold); }
+
+  .grounding {
+    margin-top: 44px;
+    background: rgba(40, 21, 69, 0.65);
+    border: 1px solid rgba(230,200,122,0.18);
+    border-radius: var(--radius);
+    padding: 26px 24px;
+    text-align: center;
+  }
+  .grounding h3 { color: var(--gold); font-size: 1.25rem; margin-bottom: 6px; }
+  .grounding .g-sub { color: var(--lilac); font-weight: 300; font-size: 0.9rem; margin-bottom: 16px; }
+  .g-step {
+    font-size: 1.1rem;
+    color: var(--cream);
+    min-height: 3.2rem;
+    display: flex; align-items: center; justify-content: center;
+    line-height: 1.55;
+    font-weight: 300;
+  }
+  .g-step b { color: var(--gold); font-weight: 600; margin-right: 6px; }
+
+  /* ---------- color ---------- */
+  .pattern-tabs { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+  .tab {
+    background: rgba(40,21,69,0.7);
+    border: 1px solid rgba(201,179,236,0.3);
+    color: var(--lilac);
+    font-family: 'Poppins', sans-serif;
+    padding: 9px 20px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 0.92rem;
+    transition: all 0.2s ease;
+  }
+  .tab.active, .tab:hover, .tab:focus-visible {
+    background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+    color: var(--plum-deep);
+    border-color: var(--gold);
+    font-weight: 600;
+    outline: none;
+  }
+  .palette { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+  .swatch {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.18);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .swatch:hover, .swatch:focus-visible { transform: scale(1.15); outline: none; }
+  .swatch.selected {
+    border-color: var(--cream);
+    box-shadow: 0 0 0 3px var(--plum-deep), 0 0 0 5px var(--gold);
+    transform: scale(1.12);
+  }
+  .canvas-frame {
+    background: rgba(22, 11, 38, 0.7);
+    border: 1px solid rgba(230,200,122,0.2);
+    border-radius: var(--radius);
+    padding: 18px;
+    display: flex; justify-content: center;
+    box-shadow: inset 0 0 40px rgba(0,0,0,0.35);
+  }
+  .canvas-frame svg { max-width: 100%; height: auto; touch-action: manipulation; }
+  .canvas-frame svg [data-fill] { cursor: pointer; transition: fill 0.25s ease; }
+  .canvas-frame svg [data-fill]:hover { filter: brightness(1.25); }
+  .color-actions { display: flex; justify-content: center; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+
+  /* ---------- boost ---------- */
+  .quote-card {
+    background: linear-gradient(160deg, var(--plum-card), var(--plum-soft));
+    border: 1px solid rgba(230,200,122,0.25);
+    border-radius: var(--radius);
+    padding: 44px 32px 36px;
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto;
+    box-shadow: 0 10px 36px rgba(0,0,0,0.4);
+    position: relative;
+  }
+  .quote-mark { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 3rem; line-height: 0.5; display: block; margin-bottom: 18px; }
+  .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 3.5vw, 1.55rem);
+    line-height: 1.55;
+    color: var(--cream);
+    min-height: 4.6rem;
+  }
+  .quote-author { color: var(--lilac); font-size: 0.95rem; margin-top: 18px; font-weight: 300; }
+  .boost-actions { display: flex; justify-content: center; gap: 12px; margin-top: 26px; flex-wrap: wrap; }
+  .heart-btn {
+    background: none;
+    border: 1px solid rgba(232,160,191,0.45);
+    color: var(--rose);
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    padding: 12px 24px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .heart-btn:hover, .heart-btn:focus-visible { background: rgba(232,160,191,0.12); transform: translateY(-2px); outline: none; }
+  .fav-list { max-width: 620px; margin: 30px auto 0; }
+  .fav-list h3 { color: var(--gold); font-size: 1.1rem; margin-bottom: 12px; text-align: center; }
+  .fav-item {
+    background: rgba(40,21,69,0.55);
+    border: 1px solid rgba(201,179,236,0.18);
+    border-radius: 14px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    color: var(--lilac);
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+  .fav-empty { text-align: center; color: var(--lilac-soft); font-size: 0.88rem; font-weight: 300; font-style: italic; }
+
+  /* ---------- footer ---------- */
+  footer {
+    text-align: center;
+    margin-top: 52px;
+    color: var(--lilac-soft);
+    font-size: 0.82rem;
+    font-weight: 300;
+    line-height: 1.7;
+    position: relative; z-index: 1;
+  }
+  footer .heart { color: var(--rose); }
+
+  /* ---------- confetti burst (for Boost hearts) ---------- */
+  .confetti-piece {
+    position: fixed;
+    width: 9px; height: 9px;
+    pointer-events: none;
+    z-index: 50;
+    border-radius: 2px;
+  }
+</style>
+</head>
+<body>
+<div id="sparkles" aria-hidden="true"></div>
+
+<div class="wrap">
+  <header>
+    <h1 class="brand"><span class="bow">🎀</span> Cancan's Calm Corner</h1>
+    <p class="tagline">a cozy little space to land when the world feels loud</p>
+  </header>
+
+  <!-- ============ HOME ============ -->
+  <section id="view-home" class="view active">
+    <p class="ask">What do you need right now?</p>
+    <div class="doors">
+      <button class="door" data-go="breathe">
+        <span class="icon">🌬️</span>
+        <h2>Breathe</h2>
+        <p>Slow everything down with a glowing breath guide and a grounding exercise.</p>
+      </button>
+      <button class="door" data-go="color">
+        <span class="icon">🎨</span>
+        <h2>Color</h2>
+        <p>Fill in calming patterns, one little section at a time. No rules, no rush.</p>
+      </button>
+      <button class="door" data-go="boost">
+        <span class="icon">💬</span>
+        <h2>Boost</h2>
+        <p>A gentle word of encouragement whenever you need one. Save your favorites.</p>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============ BREATHE ============ -->
+  <section id="view-breathe" class="view">
+    <button class="back" data-go="home">🎀 back to the corner</button>
+    <h2 class="section-title">Breathe</h2>
+    <p class="section-sub">Follow the glow. In through your nose, out through your mouth.</p>
+    <div class="orb-stage">
+      <div class="orb" id="orb" aria-hidden="true"></div>
+      <p class="breath-cue" id="breathCue">Ready when you are 💜</p>
+      <p class="breath-count" id="breathCount"></p>
+      <button class="pill-btn" id="breathBtn">Begin breathing</button>
+    </div>
+    <div class="grounding">
+      <h3>5 · 4 · 3 · 2 · 1 Grounding</h3>
+      <p class="g-sub">A little anchor for spiraling moments — notice the world around you.</p>
+      <div class="g-step" id="gStep">Press start and take it one sense at a time.</div>
+      <button class="pill-btn ghost" id="gBtn">Start grounding</button>
+    </div>
+  </section>
+
+  <!-- ============ COLOR ============ -->
+  <section id="view-color" class="view">
+    <button class="back" data-go="home">🎀 back to the corner</button>
+    <h2 class="section-title">Color</h2>
+    <p class="section-sub">Pick a color, tap a section. Watch the calm fill in.</p>
+    <div class="pattern-tabs" id="patternTabs">
+      <button class="tab active" data-pattern="mandala">Mandala</button>
+      <button class="tab" data-pattern="bow">Bow 🎀</button>
+      <button class="tab" data-pattern="flower">Flower</button>
+    </div>
+    <div class="palette" id="palette"></div>
+    <div class="canvas-frame"><div id="patternHolder"></div></div>
+    <div class="color-actions">
+      <button class="pill-btn ghost" id="clearBtn">Start over</button>
+      <button class="pill-btn" id="saveBtn">Save my art ⬇️</button>
+    </div>
+  </section>
+
+  <!-- ============ BOOST ============ -->
+  <section id="view-boost" class="view">
+    <button class="back" data-go="home">🎀 back to the corner</button>
+    <h2 class="section-title">Boost</h2>
+    <p class="section-sub">A little encouragement, on tap.</p>
+    <div class="quote-card">
+      <span class="quote-mark">"</span>
+      <p class="quote-text" id="quoteText"></p>
+      <p class="quote-author" id="quoteAuthor"></p>
+      <div class="boost-actions">
+        <button class="pill-btn" id="newQuoteBtn">Boost me ✨</button>
+        <button class="heart-btn" id="heartBtn">💜 Save this one</button>
+      </div>
+    </div>
+    <div class="fav-list">
+      <h3>Your saved boosts</h3>
+      <div id="favHolder"><p class="fav-empty">Nothing saved yet — heart the ones that hit home.</p></div>
+    </div>
+  </section>
+
+  <footer>
+    Made with <span class="heart">💜</span> by Cancan · This corner is comfort, not medical advice.<br>
+    If things feel heavy, reaching out to someone you trust — or a professional — is a brave move too.
+  </footer>
+</div>
+
+<script>
+/* =============== NAVIGATION =============== */
+document.querySelectorAll('[data-go]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.go;
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.getElementById('view-' + target).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (target !== 'breathe') stopBreathing();
+  });
+});
+
+/* =============== DRIFTING SPARKLES =============== */
+(function makeSparkles() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const holder = document.getElementById('sparkles');
+  for (let i = 0; i < 26; i++) {
+    const s = document.createElement('div');
+    s.className = 'sparkle';
+    const size = 2 + Math.random() * 3.5;
+    s.style.width = size + 'px';
+    s.style.height = size + 'px';
+    s.style.left = Math.random() * 100 + 'vw';
+    s.style.setProperty('--spark-op', (0.25 + Math.random() * 0.45).toFixed(2));
+    s.style.animationDuration = (14 + Math.random() * 18) + 's';
+    s.style.animationDelay = (-Math.random() * 30) + 's';
+    holder.appendChild(s);
+  }
+})();
+
+/* =============== BREATHE =============== */
+const orb = document.getElementById('orb');
+const breathCue = document.getElementById('breathCue');
+const breathCount = document.getElementById('breathCount');
+const breathBtn = document.getElementById('breathBtn');
+let breathing = false, breathTimers = [];
+
+const PHASES = [
+  { label: 'Breathe in…', cls: 'inhale', secs: 4 },
+  { label: 'Hold it gently…', cls: 'inhale', secs: 4 },
+  { label: 'And let it go…', cls: 'exhale', secs: 6 },
+];
+
+function runPhase(i, cycle) {
+  if (!breathing) return;
+  const p = PHASES[i % PHASES.length];
+  orb.classList.remove('inhale', 'exhale');
+  void orb.offsetWidth; /* restart transition */
+  orb.classList.add(p.cls);
+  orb.style.transitionDuration = p.secs + 's';
+  breathCue.textContent = p.label;
+
+  let remaining = p.secs;
+  breathCount.textContent = remaining;
+  const tick = setInterval(() => {
+    remaining--;
+    if (remaining > 0) breathCount.textContent = remaining;
+  }, 1000);
+  breathTimers.push(tick);
+
+  const next = setTimeout(() => {
+    clearInterval(tick);
+    const nextIdx = (i + 1) % PHASES.length;
+    const nextCycle = nextIdx === 0 ? cycle + 1 : cycle;
+    if (nextCycle > 4 && nextIdx === 0) {
+      finishBreathing();
+    } else {
+      runPhase(nextIdx, nextCycle);
+    }
+  }, p.secs * 1000);
+  breathTimers.push(next);
+}
+
+function finishBreathing() {
+  breathing = false;
+  clearBreathTimers();
+  orb.classList.remove('inhale');
+  orb.classList.add('exhale');
+  breathCue.textContent = 'Beautiful. You did that. 💜';
+  breathCount.textContent = '';
+  breathBtn.textContent = 'Begin breathing';
+}
+
+function stopBreathing() {
+  breathing = false;
+  clearBreathTimers();
+  orb.classList.remove('inhale', 'exhale');
+  breathCue.textContent = 'Ready when you are 💜';
+  breathCount.textContent = '';
+  breathBtn.textContent = 'Begin breathing';
+}
+
+function clearBreathTimers() {
+  breathTimers.forEach(t => { clearTimeout(t); clearInterval(t); });
+  breathTimers = [];
+}
+
+breathBtn.addEventListener('click', () => {
+  if (breathing) { stopBreathing(); return; }
+  breathing = true;
+  breathBtn.textContent = 'Pause';
+  runPhase(0, 1);
+});
+
+/* ---- 5-4-3-2-1 grounding ---- */
+const G_STEPS = [
+  ['5', 'things you can <b>see</b> around you. Look for little details — colors, shapes, light.'],
+  ['4', 'things you can <b>touch</b>. The fabric of your shirt, the chair holding you up.'],
+  ['3', 'things you can <b>hear</b>. Near sounds, far sounds, even the quiet itself.'],
+  ['2', 'things you can <b>smell</b> — or two smells you love, if none are around.'],
+  ['1', 'thing you can <b>taste</b>, or one kind thing you can say to yourself.'],
+];
+const gStep = document.getElementById('gStep');
+const gBtn = document.getElementById('gBtn');
+let gIndex = -1;
+
+gBtn.addEventListener('click', () => {
+  gIndex++;
+  if (gIndex >= G_STEPS.length) {
+    gStep.innerHTML = 'You\u2019re here. You\u2019re grounded. You\u2019re okay. 🌙';
+    gBtn.textContent = 'Start again';
+    gIndex = -1;
+    return;
+  }
+  const [num, text] = G_STEPS[gIndex];
+  gStep.innerHTML = '<b>Name ' + num + '</b> ' + text;
+  gBtn.textContent = gIndex === G_STEPS.length - 1 ? 'Finish' : 'Next';
+});
+
+/* =============== COLOR =============== */
+const COLORS = ['#e6c87a', '#a98fd6', '#7e57c2', '#e8a0bf', '#8fd6c9', '#f6efff', '#d4845f', '#5c6fc9'];
+let activeColor = COLORS[0];
+const paletteEl = document.getElementById('palette');
+
+COLORS.forEach((c, i) => {
+  const sw = document.createElement('button');
+  sw.className = 'swatch' + (i === 0 ? ' selected' : '');
+  sw.style.background = c;
+  sw.setAttribute('aria-label', 'Color ' + c);
+  sw.addEventListener('click', () => {
+    activeColor = c;
+    document.querySelectorAll('.swatch').forEach(s => s.classList.remove('selected'));
+    sw.classList.add('selected');
+  });
+  paletteEl.appendChild(sw);
+});
+
+const BASE_FILL = '#2e1a4d';
+const STROKE = '#e6c87a';
+const holder = document.getElementById('patternHolder');
+
+/* Build mandala programmatically: rings of petals */
+function mandalaSVG() {
+  const cx = 250, cy = 250;
+  let shapes = '';
+  shapes += ring(cx, cy, 8, 55, 105, 0);       /* inner petals */
+  shapes += ring(cx, cy, 12, 110, 170, 15);    /* middle petals */
+  shapes += ring(cx, cy, 16, 175, 235, 0);     /* outer petals */
+  shapes += `<circle data-fill cx="${cx}" cy="${cy}" r="48" fill="${BASE_FILL}" stroke="${STROKE}" stroke-width="2"/>`;
+  shapes += `<circle data-fill cx="${cx}" cy="${cy}" r="24" fill="${BASE_FILL}" stroke="${STROKE}" stroke-width="2"/>`;
+  return `<svg id="artSvg" viewBox="0 0 500 500" width="460" height="460" xmlns="http://www.w3.org/2000/svg">${shapes}</svg>`;
+
+  function ring(cx, cy, count, r1, r2, offsetDeg) {
+    let out = '';
+    const mid = (r1 + r2) / 2, half = Math.PI / count * 0.92;
+    for (let i = 0; i < count; i++) {
+      const a = (i / count) * Math.PI * 2 + offsetDeg * Math.PI / 180;
+      const p1 = pt(cx, cy, r1, a);
+      const p2 = pt(cx, cy, mid, a - half);
+      const p3 = pt(cx, cy, r2, a);
+      const p4 = pt(cx, cy, mid, a + half);
+      out += `<path data-fill d="M ${p1} Q ${p2} ${p3} Q ${p4} ${p1} Z" fill="${BASE_FILL}" stroke="${STROKE}" stroke-width="2"/>`;
+    }
+    return out;
+  }
+  function pt(cx, cy, r, a) {
+    return (cx + r * Math.cos(a)).toFixed(1) + ' ' + (cy + r * Math.sin(a)).toFixed(1);
+  }
+}
+
+/* Bow: hand-drawn regions */
+function bowSVG() {
+  const f = `fill="${BASE_FILL}" stroke="${STROKE}" stroke-width="2.5"`;
+  return `<svg id="artSvg" viewBox="0 0 500 420" width="460" height="386" xmlns="http://www.w3.org/2000/svg">
+    <!-- left loop -->
+    <path data-fill ${f} d="M 235 170 C 160 80, 50 80, 45 160 C 42 230, 150 235, 235 195 Z"/>
+    <path data-fill ${f} d="M 235 182 C 175 145, 95 135, 80 165 C 70 195, 165 205, 235 192 Z"/>
+    <!-- right loop -->
+    <path data-fill ${f} d="M 265 170 C 340 80, 450 80, 455 160 C 458 230, 350 235, 265 195 Z"/>
+    <path data-fill ${f} d="M 265 182 C 325 145, 405 135, 420 165 C 430 195, 335 205, 265 192 Z"/>
+    <!-- knot -->
+    <ellipse data-fill ${f} cx="250" cy="183" rx="34" ry="30"/>
+    <!-- left tail -->
+    <path data-fill ${f} d="M 232 210 C 200 280, 175 330, 140 385 L 185 370 L 200 400 C 225 330, 238 270, 244 213 Z"/>
+    <!-- right tail -->
+    <path data-fill ${f} d="M 268 210 C 300 280, 325 330, 360 385 L 315 370 L 300 400 C 275 330, 262 270, 256 213 Z"/>
+    <!-- tail stripes -->
+    <path data-fill ${f} d="M 214 265 C 222 268, 232 268, 240 264 L 236 290 C 229 293, 219 292, 212 288 Z"/>
+    <path data-fill ${f} d="M 286 265 C 278 268, 268 268, 260 264 L 264 290 C 271 293, 281 292, 288 288 Z"/>
+  </svg>`;
+}
+
+/* Flower: petals + center + leaves */
+function flowerSVG() {
+  const cx = 250, cy = 210;
+  const f = `fill="${BASE_FILL}" stroke="${STROKE}" stroke-width="2.5"`;
+  let petals = '';
+  for (let i = 0; i < 8; i++) {
+    const a = (i / 8) * 360;
+    petals += `<ellipse data-fill ${f} cx="${cx}" cy="${cy - 95}" rx="42" ry="78" transform="rotate(${a} ${cx} ${cy})"/>`;
+  }
+  let inner = '';
+  for (let i = 0; i < 8; i++) {
+    const a = (i / 8) * 360 + 22.5;
+    inner += `<ellipse data-fill ${f} cx="${cx}" cy="${cy - 55}" rx="24" ry="44" transform="rotate(${a} ${cx} ${cy})"/>`;
+  }
+  return `<svg id="artSvg" viewBox="0 0 500 470" width="460" height="432" xmlns="http://www.w3.org/2000/svg">
+    ${petals}${inner}
+    <circle data-fill ${f} cx="${cx}" cy="${cy}" r="42"/>
+    <path data-fill ${f} d="M 250 252 C 248 310, 248 360, 250 425 C 252 360, 252 310, 250 252 Z" stroke-width="4"/>
+    <path data-fill ${f} d="M 250 330 C 215 318, 175 320, 150 345 C 180 362, 225 355, 250 338 Z"/>
+    <path data-fill ${f} d="M 250 370 C 285 358, 325 360, 350 385 C 320 402, 275 395, 250 378 Z"/>
+  </svg>`;
+}
+
+const PATTERNS = { mandala: mandalaSVG, bow: bowSVG, flower: flowerSVG };
+
+function loadPattern(name) {
+  holder.innerHTML = PATTERNS[name]();
+  holder.querySelectorAll('[data-fill]').forEach(el => {
+    el.addEventListener('click', () => { el.setAttribute('fill', activeColor); });
+  });
+}
+loadPattern('mandala');
+
+document.querySelectorAll('#patternTabs .tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('#patternTabs .tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    loadPattern(tab.dataset.pattern);
+  });
+});
+
+document.getElementById('clearBtn').addEventListener('click', () => {
+  const active = document.querySelector('#patternTabs .tab.active').dataset.pattern;
+  loadPattern(active);
+});
+
+/* Save artwork as PNG with the dark background */
+document.getElementById('saveBtn').addEventListener('click', () => {
+  const svg = document.getElementById('artSvg');
+  const xml = new XMLSerializer().serializeToString(svg);
+  const img = new Image();
+  img.onload = () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = 1000; canvas.height = 1000 * (img.height / img.width);
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#221238';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    const a = document.createElement('a');
+    a.download = 'my-calm-corner-art.png';
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+  };
+  img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(xml)));
+});
+
+/* =============== BOOST =============== */
+const QUOTES = [
+  ['You don\u2019t have to feel ready. You just have to begin.', 'Auntie Cancan'],
+  ['Nervous and brave can live in the same body at the same time.', 'Auntie Cancan'],
+  ['The phone call is three minutes. The dread is three hours. Make the call.', 'Auntie Cancan'],
+  ['You\u2019ve survived 100% of your hardest days so far. That\u2019s a perfect record.', 'Auntie Cancan'],
+  ['Be gentle with yourself — you\u2019re doing the best you can with a brain that worries because it cares.', 'Auntie Cancan'],
+  ['Awkward isn\u2019t fatal. Nobody is replaying that moment but you.', 'Auntie Cancan'],
+  ['Small steps still count as steps. Tiny wins still count as wins.', 'Auntie Cancan'],
+  ['What lies behind us and what lies before us are tiny matters compared to what lies within us.', 'Ralph Waldo Emerson'],
+  ['It is not because things are difficult that we do not dare; it is because we do not dare that things are difficult.', 'Seneca'],
+  ['The wound is the place where the Light enters you.', 'Rumi'],
+  ['Nothing diminishes anxiety faster than action.', 'Walter Anderson'],
+  ['You wouldn\u2019t talk to your best friend the way you talk to yourself. Try friend-voice today.', 'Auntie Cancan'],
+  ['Beginnings are usually scary and endings are usually sad, but it\u2019s everything in between that makes it worth living.', 'Bob Marley'],
+  ['Breathe. It\u2019s just a bad moment, not a bad life.', 'Auntie Cancan'],
+  ['They\u2019re probably not thinking about you — they\u2019re busy worrying what YOU think of THEM.', 'Auntie Cancan'],
+  ['Courage doesn\u2019t always roar. Sometimes it\u2019s the quiet voice saying \u201CI\u2019ll try again tomorrow.\u201D', 'Mary Anne Radmacher'],
+  ['You are allowed to take up space, ask the question, and order the complicated coffee.', 'Auntie Cancan'],
+  ['A river cuts through rock not because of its power, but because of its persistence.', 'James N. Watkins'],
+  ['Rest is productive. Recharging IS doing something.', 'Auntie Cancan'],
+  ['You showed up today. That already counts.', 'Auntie Cancan'],
+];
+
+const quoteText = document.getElementById('quoteText');
+const quoteAuthor = document.getElementById('quoteAuthor');
+const favHolder = document.getElementById('favHolder');
+let currentQuote = null;
+let favorites = [];
+let lastIdx = -1;
+
+function newQuote() {
+  let idx;
+  do { idx = Math.floor(Math.random() * QUOTES.length); } while (idx === lastIdx);
+  lastIdx = idx;
+  currentQuote = QUOTES[idx];
+  quoteText.textContent = currentQuote[0];
+  quoteAuthor.textContent = '— ' + currentQuote[1];
+}
+newQuote();
+
+document.getElementById('newQuoteBtn').addEventListener('click', newQuote);
+
+document.getElementById('heartBtn').addEventListener('click', (e) => {
+  if (!currentQuote || favorites.includes(currentQuote)) return;
+  favorites.push(currentQuote);
+  renderFavs();
+  confettiBurst(e.clientX, e.clientY);
+});
+
+function renderFavs() {
+  if (!favorites.length) {
+    favHolder.innerHTML = '<p class="fav-empty">Nothing saved yet — heart the ones that hit home.</p>';
+    return;
+  }
+  favHolder.innerHTML = favorites
+    .map(q => '<div class="fav-item">\u201C' + q[0] + '\u201D — ' + q[1] + '</div>')
+    .join('');
+}
+
+/* gentle confetti burst */
+function confettiBurst(x, y) {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const colors = ['#e6c87a', '#a98fd6', '#e8a0bf', '#f6efff'];
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'confetti-piece';
+    p.style.background = colors[i % colors.length];
+    p.style.left = x + 'px';
+    p.style.top = y + 'px';
+    document.body.appendChild(p);
+    const angle = Math.random() * Math.PI * 2;
+    const dist = 60 + Math.random() * 90;
+    p.animate([
+      { transform: 'translate(0,0) rotate(0deg)', opacity: 1 },
+      { transform: `translate(${Math.cos(angle) * dist}px, ${Math.sin(angle) * dist + 80}px) rotate(${Math.random() * 540}deg)`, opacity: 0 }
+    ], { duration: 900 + Math.random() * 500, easing: 'cubic-bezier(0.2, 0.6, 0.4, 1)' });
+    setTimeout(() => p.remove(), 1500);
+  }
+}
+</script>
+</body>
+</html>
