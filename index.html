@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cancan's Calm Corner 🎀</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎀</text></svg>">
 <meta name="description" content="A cozy little space to breathe, color, and feel boosted. Made with love by Cancan.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -673,6 +674,122 @@
   .vault-entry .v-del:hover { color: var(--rose); }
   .vault-msg { text-align: center; color: var(--lilac); font-weight: 300; font-style: italic; min-height: 1.4rem; margin-top: 12px; }
 
+  /* ---------- comfort blanket ---------- */
+  .blanket-toggle {
+    position: fixed;
+    bottom: 18px; right: 18px;
+    z-index: 9500;
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(230,200,122,0.4);
+    background: linear-gradient(160deg, var(--plum-card), var(--plum-soft));
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .blanket-toggle:hover { transform: scale(1.1); box-shadow: 0 8px 26px var(--gold-glow); }
+  body.blanket .blanket-toggle { border-color: var(--gold); box-shadow: 0 0 22px var(--gold-glow); }
+  body.blanket::after {
+    content: '';
+    position: fixed; inset: 0;
+    background: rgba(8, 4, 16, 0.52);
+    pointer-events: none;
+    z-index: 9000;
+  }
+  body.blanket .sparkle { display: none; }
+  body.blanket .confetti-piece { display: none; }
+
+  /* ---------- practice chat ---------- */
+  .chat-window {
+    max-width: 560px;
+    margin: 0 auto 16px;
+    background: rgba(22, 11, 38, 0.6);
+    border: 1px solid rgba(230,200,122,0.2);
+    border-radius: var(--radius);
+    padding: 20px;
+    min-height: 240px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .bub { max-width: 78%; padding: 11px 16px; border-radius: 18px; font-size: 0.93rem; font-weight: 300; line-height: 1.5; animation: fadeUp 0.4s ease both; }
+  .bub-npc { background: rgba(46, 26, 77, 0.9); border: 1px solid rgba(201,179,236,0.25); color: var(--cream); align-self: flex-start; border-bottom-left-radius: 6px; }
+  .bub-me { background: linear-gradient(135deg, var(--gold), var(--gold-soft)); color: var(--plum-deep); align-self: flex-end; border-bottom-right-radius: 6px; font-weight: 400; }
+  .bub-done { align-self: center; background: rgba(143,214,201,0.12); border: 1px solid rgba(143,214,201,0.35); color: #8fd6c9; text-align: center; }
+  .chat-opts { max-width: 560px; margin: 0 auto; display: flex; flex-direction: column; gap: 9px; }
+  .chat-opt {
+    background: rgba(40,21,69,0.7);
+    border: 1px solid rgba(201,179,236,0.35);
+    color: var(--cream);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 0.92rem;
+    padding: 12px 18px;
+    border-radius: 14px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+    line-height: 1.45;
+  }
+  .chat-opt:hover, .chat-opt:focus-visible { border-color: var(--gold); background: rgba(58,33,97,0.85); transform: translateX(4px); outline: none; }
+
+  /* ---------- dread-o-meter ---------- */
+  .meter-row { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; flex-wrap: wrap; }
+  .meter-label { color: var(--lilac); font-weight: 300; font-size: 0.92rem; }
+  .dread-slider { flex: 1; min-width: 140px; accent-color: #e8a0bf; height: 6px; cursor: pointer; }
+  .meter-val { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.4rem; min-width: 2ch; text-align: center; }
+  .meter-entry {
+    background: rgba(40,21,69,0.6);
+    border: 1px solid rgba(230,200,122,0.2);
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+  }
+  .meter-entry .m-name { color: var(--cream); font-weight: 400; margin-bottom: 10px; }
+  .meter-entry .m-name small { color: var(--lilac-soft); font-weight: 300; }
+  .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 7px; }
+  .bar-tag { width: 76px; font-size: 0.78rem; color: var(--lilac); font-weight: 300; flex-shrink: 0; }
+  .bar-track { flex: 1; height: 14px; background: rgba(22,11,38,0.7); border-radius: 7px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 7px; transition: width 0.8s cubic-bezier(0.2, 0.6, 0.3, 1); }
+  .bar-pred { background: linear-gradient(90deg, #c9536f, var(--rose)); }
+  .bar-act  { background: linear-gradient(90deg, #5fb6a5, #8fd6c9); }
+  .bar-num { width: 3ch; font-size: 0.85rem; color: var(--cream); }
+  .meter-summary { text-align: center; color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.05rem; margin-bottom: 14px; line-height: 1.5; }
+
+  /* ---------- flip cards ---------- */
+  .flip-wrap { perspective: 1200px; max-width: 480px; margin: 0 auto; }
+  .flip-card {
+    position: relative;
+    width: 100%; height: 270px;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.3, 0.8, 0.4, 1);
+    cursor: pointer;
+  }
+  .flip-card.flipped { transform: rotateY(180deg); }
+  .flip-face {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: var(--radius);
+    padding: 30px 28px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    box-shadow: 0 10px 36px rgba(0,0,0,0.4);
+  }
+  .flip-front { background: linear-gradient(160deg, #3a2161, var(--plum-card)); border: 1px solid rgba(232,160,191,0.4); }
+  .flip-back { background: linear-gradient(160deg, #1d3a35, #16332e); border: 1px solid rgba(143,214,201,0.45); transform: rotateY(180deg); }
+  .flip-label { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; margin-bottom: 16px; }
+  .flip-front .flip-label { color: var(--rose); }
+  .flip-back .flip-label { color: #8fd6c9; }
+  .flip-text { font-family: 'Playfair Display', serif; font-size: 1.25rem; line-height: 1.55; color: var(--cream); }
+  .flip-tap { margin-top: 18px; color: var(--lilac-soft); font-size: 0.8rem; font-weight: 300; }
+
+  /* ---------- thought traps ---------- */
+  .trap-thought { font-family: 'Playfair Display', serif; font-size: 1.25rem; line-height: 1.55; color: var(--cream); text-align: center; margin: 8px 0 20px; min-height: 4rem; }
+  .trap-opts { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+  .trap-feedback { text-align: center; color: var(--lilac); font-weight: 300; line-height: 1.6; min-height: 3.5rem; font-size: 0.95rem; }
+  .trap-feedback b { color: var(--gold); font-weight: 500; }
+  .trap-score { text-align: center; color: var(--lilac-soft); font-size: 0.85rem; margin-top: 10px; }
+
   /* ---------- footer ---------- */
   footer {
     text-align: center;
@@ -697,6 +814,7 @@
 </head>
 <body>
 <div id="sparkles" aria-hidden="true"></div>
+<button class="blanket-toggle" id="blanketToggle" title="Comfort Blanket — dims and softens everything">🧸</button>
 
 <div class="wrap">
   <header>
@@ -752,7 +870,22 @@
       <button class="door" data-go="vault">
         <span class="icon">🔒</span>
         <h2>The Vent Vault</h2>
-        <p>Say what you can't say out loud. Lock it away — or let it vanish forever.</p>
+        <p>Say what you can't say out loud. Lock it away — or let it vanish into stars.</p>
+      </button>
+      <button class="door" data-go="chat">
+        <span class="icon">🗨️</span>
+        <h2>Practice Chat</h2>
+        <p>Rehearse the scary conversations — where every option is a right answer.</p>
+      </button>
+      <button class="door" data-go="meter">
+        <span class="icon">📊</span>
+        <h2>Dread-o-Meter</h2>
+        <p>Predict the dread, then log reality. Catch your brain exaggerating — with receipts.</p>
+      </button>
+      <button class="door" data-go="gym">
+        <span class="icon">🧠</span>
+        <h2>Brain Gym</h2>
+        <p>Flip anxious thoughts to their kinder side, and catch sneaky thought traps.</p>
       </button>
     </div>
     <button class="sos-btn" data-go="sos">🫧 Calm me down — my nerves are spiraling</button>
@@ -940,6 +1073,67 @@
     <p class="section-sub">The things you can't say out loud — they're safe in here. Or let them dissolve into nothing.</p>
     <div class="talk-card" id="vaultCard"></div>
     <p class="scope-note" style="text-align:center;">Everything in the vault lives on this device only — nothing is ever uploaded anywhere.<br>The passcode is a privacy curtain for peace of mind, not bank-level encryption.</p>
+  </section>
+
+  <!-- ============ PRACTICE CHAT ============ -->
+  <section id="view-chat" class="view">
+    <button class="back" data-go="home">🎀 back to the corner</button>
+    <h2 class="section-title">Practice Chat</h2>
+    <p class="section-sub">A rehearsal room. Pick any reply — they all work. That's the whole point.</p>
+    <div class="pattern-tabs" id="chatScenes"></div>
+    <div class="chat-window" id="chatWindow"></div>
+    <div class="chat-opts" id="chatOpts"></div>
+  </section>
+
+  <!-- ============ DREAD-O-METER ============ -->
+  <section id="view-meter" class="view">
+    <button class="back" data-go="home">🎀 back to the corner</button>
+    <h2 class="section-title">Dread-o-Meter</h2>
+    <p class="section-sub">Rate how bad you think it'll be. Then come back and rate how bad it actually was.</p>
+    <div class="talk-card">
+      <p class="talk-q">Before the thing</p>
+      <input class="win-input" id="meterEvent" style="border-radius:14px;width:100%;margin-bottom:16px;" maxlength="80" placeholder="What's coming up? (the call, the party, the meeting…)">
+      <div class="meter-row">
+        <span class="meter-label">Predicted dread:</span>
+        <input type="range" min="1" max="10" value="5" id="meterPred" class="dread-slider">
+        <span class="meter-val" id="meterPredVal">5</span>
+      </div>
+      <div class="talk-actions"><button class="pill-btn" id="meterLog">Log my prediction 📌</button></div>
+    </div>
+    <div class="fav-list" id="meterPendingWrap" style="display:none;">
+      <h3>Waiting on reality ⏳</h3>
+      <div id="meterPending"></div>
+    </div>
+    <div class="fav-list" id="meterDoneWrap" style="display:none;">
+      <h3>The receipts 🧾</h3>
+      <p class="meter-summary" id="meterSummary"></p>
+      <div id="meterDone"></div>
+    </div>
+  </section>
+
+  <!-- ============ BRAIN GYM ============ -->
+  <section id="view-gym" class="view">
+    <button class="back" data-go="home">🎀 back to the corner</button>
+    <h2 class="section-title">Brain Gym</h2>
+    <p class="section-sub">Two little workouts for the worried brain.</p>
+    <div class="pattern-tabs" id="gymTabs">
+      <button class="tab active" data-gym="flip">Flip It 🔄</button>
+      <button class="tab" data-gym="traps">Thought Traps 🪤</button>
+    </div>
+    <div id="gym-flip">
+      <p class="pop-count" style="margin-top:0;">Tap the card to flip the thought.</p>
+      <div class="flip-wrap"><div class="flip-card" id="flipCard">
+        <div class="flip-face flip-front"><p class="flip-label">the anxious thought</p><p class="flip-text" id="flipFront"></p><p class="flip-tap">tap to flip 🔄</p></div>
+        <div class="flip-face flip-back"><p class="flip-label">the kinder truth</p><p class="flip-text" id="flipBack"></p></div>
+      </div></div>
+      <div class="pop-actions" style="gap:12px;margin-top:20px;">
+        <button class="pill-btn ghost" id="flipPrev">← Previous</button>
+        <button class="pill-btn" id="flipNext">Next thought →</button>
+      </div>
+    </div>
+    <div id="gym-traps" style="display:none;">
+      <div class="talk-card" id="trapCard"></div>
+    </div>
   </section>
 
   <footer>
@@ -2378,10 +2572,11 @@ function renderVaultOpen() {
     const ta = document.getElementById('ventText');
     if (!ta.value.trim()) return;
     ta.classList.add('dissolving');
+    starScatter(ta.getBoundingClientRect());
     setTimeout(() => {
       ta.value = '';
       ta.classList.remove('dissolving');
-      document.getElementById('ventMsg').textContent = 'Gone. Released. It\u2019s out of you now. \uD83C\uDF2C\uFE0F';
+      document.getElementById('ventMsg').textContent = 'Gone \u2014 scattered into stars. It\u2019s out of you now. \u2728';
       setTimeout(() => { const m = document.getElementById('ventMsg'); if (m) m.textContent = ''; }, 4000);
     }, 1700);
   });
@@ -2404,6 +2599,323 @@ function renderVaultOpen() {
   }));
 }
 document.querySelectorAll('[data-go="vault"]').forEach(b => b.addEventListener('click', () => { vaultUnlocked = false; renderVault(); }));
+
+/* =============== STAR SCATTER (vault vanish) =============== */
+function starScatter(rect) {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const glyphs = ['\u2726', '\u2727', '\u2728', '\u22C6'];
+  const colors = ['#e6c87a', '#cbb6f0', '#f6efff', '#a98fd6'];
+  for (let i = 0; i < 26; i++) {
+    const s = document.createElement('span');
+    s.textContent = glyphs[i % glyphs.length];
+    s.style.cssText = 'position:fixed;pointer-events:none;z-index:9990;font-size:' + (10 + Math.random() * 14) + 'px;color:' + colors[i % colors.length] + ';';
+    s.style.left = (rect.left + Math.random() * rect.width) + 'px';
+    s.style.top = (rect.top + Math.random() * rect.height) + 'px';
+    document.body.appendChild(s);
+    s.animate([
+      { transform: 'translate(0,0) scale(0.6) rotate(0deg)', opacity: 1 },
+      { transform: 'translate(' + ((Math.random() - 0.5) * 120) + 'px,' + (-(60 + Math.random() * 140)) + 'px) scale(1.2) rotate(' + ((Math.random() - 0.5) * 180) + 'deg)', opacity: 0 }
+    ], { duration: 1600 + Math.random() * 900, easing: 'cubic-bezier(0.2, 0.6, 0.4, 1)' });
+    setTimeout(() => s.remove(), 2600);
+  }
+}
+
+/* =============== COMFORT BLANKET =============== */
+const blanketToggle = document.getElementById('blanketToggle');
+function setBlanket(on) {
+  document.body.classList.toggle('blanket', on);
+  blanketToggle.style.opacity = on ? '1' : '0.85';
+  blanketToggle.title = on ? 'Comfort Blanket is ON \u2014 tap to brighten back up' : 'Comfort Blanket \u2014 dims and softens everything';
+  if (on) stopSpeaking();
+  store('ccc-blanket', on ? '1' : '0');
+}
+blanketToggle.addEventListener('click', () => setBlanket(!document.body.classList.contains('blanket')));
+if (load('ccc-blanket') === '1') setBlanket(true);
+
+/* =============== PRACTICE CHAT =============== */
+const CHAT_SCENARIOS = {
+  '\u2615 Caf\u00E9': {
+    npcName: 'Barista',
+    turns: [
+      { npc: "Hi there! What can I get started for you?", options: [
+        "Hi! Could I get a medium iced coffee, please?",
+        "Um, hi \u2014 can I do a hot chocolate?",
+        "Hi! One second\u2026 okay, a caramel latte please!"
+      ]},
+      { npc: "You got it! Anything else for you today?", options: [
+        "No, that's everything \u2014 thank you!",
+        "Actually, could I also grab a water?",
+        "That's all! Thanks so much."
+      ]},
+    ],
+    closing: "Perfect \u2014 that'll be right up. Have a great one! \u2615"
+  },
+  '\uD83D\uDED2 Store help': {
+    npcName: 'Employee',
+    turns: [
+      { npc: "Hi, welcome in! Let me know if you need anything.", options: [
+        "Hi! Actually yes \u2014 where would I find the tape?",
+        "Excuse me \u2014 could you help me find something?",
+        "Hi! I'm looking for gift bags, any idea where those are?"
+      ]},
+      { npc: "Of course! That's aisle 7, just over there. Want me to walk you over?", options: [
+        "I can find it \u2014 thank you so much!",
+        "Sure, that'd be great. Thank you!",
+        "Aisle 7, got it. Thanks for your help!"
+      ]},
+    ],
+    closing: "Anytime! That's literally what we're here for. Holler if you need anything else! \uD83D\uDE0A"
+  },
+  '\uD83D\uDCDE Booking a call': {
+    npcName: 'Receptionist',
+    turns: [
+      { npc: "Good afternoon, Smile Dental, this is Dana \u2014 how can I help you?", options: [
+        "Hi, I'd like to schedule a cleaning, please.",
+        "Hi! I need to make an appointment \u2014 I'm a new patient.",
+        "Hi, um \u2014 do you have anything available next week?"
+      ]},
+      { npc: "Absolutely! I have Tuesday at 2:00 or Thursday at 10:30 \u2014 any preference?", options: [
+        "Tuesday at 2 works great.",
+        "Thursday morning, please!",
+        "Hmm \u2014 let's do Tuesday, please."
+      ]},
+    ],
+    closing: "You're all set! We'll see you then \u2014 have a lovely day! \uD83D\uDCC5"
+  }
+};
+
+const chatScenes = document.getElementById('chatScenes');
+const chatWindow = document.getElementById('chatWindow');
+const chatOpts = document.getElementById('chatOpts');
+let chatScenario = Object.keys(CHAT_SCENARIOS)[0];
+let chatTurn = 0;
+
+Object.keys(CHAT_SCENARIOS).forEach((name, i) => {
+  const t = document.createElement('button');
+  t.className = 'tab' + (i === 0 ? ' active' : '');
+  t.textContent = name;
+  t.addEventListener('click', () => {
+    chatScenes.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    chatScenario = name;
+    startChat();
+  });
+  chatScenes.appendChild(t);
+});
+
+function bubble(cls, text) {
+  const b = document.createElement('div');
+  b.className = 'bub ' + cls;
+  b.textContent = text;
+  chatWindow.appendChild(b);
+  chatWindow.scrollTop = chatWindow.scrollHeight;
+}
+function startChat() {
+  chatWindow.innerHTML = '';
+  chatOpts.innerHTML = '';
+  chatTurn = 0;
+  const sc = CHAT_SCENARIOS[chatScenario];
+  setTimeout(() => { bubble('bub-npc', sc.turns[0].npc); showChatOptions(); }, 350);
+}
+function showChatOptions() {
+  const sc = CHAT_SCENARIOS[chatScenario];
+  chatOpts.innerHTML = '';
+  sc.turns[chatTurn].options.forEach(opt => {
+    const b = document.createElement('button');
+    b.className = 'chat-opt';
+    b.textContent = opt;
+    b.addEventListener('click', () => {
+      chatOpts.innerHTML = '';
+      bubble('bub-me', opt);
+      chatTurn++;
+      setTimeout(() => {
+        if (chatTurn < sc.turns.length) {
+          bubble('bub-npc', sc.turns[chatTurn].npc);
+          showChatOptions();
+        } else {
+          bubble('bub-npc', sc.closing);
+          setTimeout(() => {
+            bubble('bub-done', '\uD83C\uDF1F See that? Every option worked. There was never a wrong thing to say.');
+            const again = document.createElement('button');
+            again.className = 'pill-btn ghost';
+            again.textContent = 'Practice again \uD83D\uDD01';
+            again.addEventListener('click', startChat);
+            chatOpts.appendChild(again);
+          }, 800);
+        }
+      }, 750);
+    });
+    chatOpts.appendChild(b);
+  });
+}
+document.querySelectorAll('[data-go="chat"]').forEach(b => b.addEventListener('click', startChat));
+
+/* =============== DREAD-O-METER =============== */
+const meterPred = document.getElementById('meterPred');
+const meterPredVal = document.getElementById('meterPredVal');
+meterPred.addEventListener('input', () => meterPredVal.textContent = meterPred.value);
+
+function meterData() {
+  try { return JSON.parse(load('ccc-meter') || '{"pending":[],"done":[]}'); }
+  catch (e) { return { pending: [], done: [] }; }
+}
+function saveMeter(d) { store('ccc-meter', JSON.stringify(d)); }
+
+document.getElementById('meterLog').addEventListener('click', () => {
+  const name = document.getElementById('meterEvent').value.trim();
+  if (!name) return;
+  const d = meterData();
+  d.pending.unshift({ name: name, pred: parseInt(meterPred.value, 10) });
+  saveMeter(d);
+  document.getElementById('meterEvent').value = '';
+  meterPred.value = 5; meterPredVal.textContent = '5';
+  renderMeter();
+});
+
+function renderMeter() {
+  const d = meterData();
+  const pw = document.getElementById('meterPendingWrap');
+  const dw = document.getElementById('meterDoneWrap');
+  pw.style.display = d.pending.length ? '' : 'none';
+  dw.style.display = d.done.length ? '' : 'none';
+
+  document.getElementById('meterPending').innerHTML = d.pending.map((p, i) =>
+    '<div class="meter-entry"><button class="v-del" data-pi="' + i + '">remove</button>' +
+    '<p class="m-name">' + escapeHTML(p.name) + ' <small>\u2014 you predicted ' + p.pred + '/10</small></p>' +
+    '<div class="meter-row"><span class="meter-label">How bad was it really?</span>' +
+    '<input type="range" min="1" max="10" value="5" class="dread-slider" id="act-' + i + '">' +
+    '<span class="meter-val" id="actval-' + i + '">5</span></div>' +
+    '<div class="talk-actions" style="margin-top:8px;"><button class="pill-btn ghost" data-done="' + i + '">It happened \u2014 log reality \u2705</button></div></div>'
+  ).join('');
+
+  document.getElementById('meterDone').innerHTML = d.done.map((e, i) =>
+    '<div class="meter-entry"><button class="v-del" data-di="' + i + '">remove</button>' +
+    '<p class="m-name">' + escapeHTML(e.name) + '</p>' +
+    '<div class="bar-row"><span class="bar-tag">Predicted</span><div class="bar-track"><div class="bar-fill bar-pred" style="width:' + (e.pred * 10) + '%"></div></div><span class="bar-num">' + e.pred + '</span></div>' +
+    '<div class="bar-row"><span class="bar-tag">Reality</span><div class="bar-track"><div class="bar-fill bar-act" style="width:' + (e.act * 10) + '%"></div></div><span class="bar-num">' + e.act + '</span></div></div>'
+  ).join('');
+
+  if (d.done.length) {
+    const avgGap = d.done.reduce((s, e) => s + (e.pred - e.act), 0) / d.done.length;
+    document.getElementById('meterSummary').textContent = avgGap > 0.4
+      ? 'On average, your brain over-predicted by ' + avgGap.toFixed(1) + ' points. Caught it. \uD83D\uDCF8'
+      : avgGap < -0.4
+        ? 'Reality has been running a little tougher than predicted lately \u2014 be extra gentle with yourself. \uD83D\uDC9C'
+        : 'Your predictions are running close to reality \u2014 your radar is honest. \uD83C\uDFAF';
+  }
+
+  document.querySelectorAll('#meterPending .dread-slider').forEach(sl => {
+    sl.addEventListener('input', () => document.getElementById('actval-' + sl.id.split('-')[1]).textContent = sl.value);
+  });
+  document.querySelectorAll('[data-done]').forEach(btn => btn.addEventListener('click', () => {
+    const i = parseInt(btn.dataset.done, 10);
+    const d = meterData();
+    const entry = d.pending.splice(i, 1)[0];
+    entry.act = parseInt(document.getElementById('act-' + i).value, 10);
+    d.done.unshift(entry);
+    saveMeter(d);
+    renderMeter();
+  }));
+  document.querySelectorAll('[data-pi]').forEach(btn => btn.addEventListener('click', () => {
+    const d = meterData(); d.pending.splice(parseInt(btn.dataset.pi, 10), 1); saveMeter(d); renderMeter();
+  }));
+  document.querySelectorAll('[data-di]').forEach(btn => btn.addEventListener('click', () => {
+    const d = meterData(); d.done.splice(parseInt(btn.dataset.di, 10), 1); saveMeter(d); renderMeter();
+  }));
+}
+renderMeter();
+
+/* =============== BRAIN GYM: FLIP IT =============== */
+const FLIPS = [
+  ["Everyone noticed my hands shaking.", "People are focused on themselves \u2014 and shaky hands read as \u201Chuman,\u201D not \u201Cfailure.\u201D"],
+  ["I said something so stupid. They'll remember it forever.", "You're the only one replaying it. Everyone else's brain moved on within minutes."],
+  ["They didn't text back. They must be mad at me.", "People get busy, tired, distracted. Silence is usually about their day \u2014 not about you."],
+  ["If I mess this up, everything is ruined.", "One rough moment is a moment, not a verdict. You've recovered from worse."],
+  ["I have nothing interesting to say.", "You don't need a highlight reel. Questions, honesty, and listening carry conversations."],
+  ["They only invited me to be polite.", "People guard their time fiercely. An invitation usually means they want you there."],
+  ["Everyone there will know each other except me.", "Every room has someone else feeling new \u2014 you might be exactly who they're hoping to find."],
+  ["I'm too awkward for this.", "Awkward is a feeling, not a fact. And honestly? Most people find a little awkward endearing."],
+  ["If I ask, they'll think I'm dumb.", "Asking reads as engaged and brave. The \u201Cdumb\u201D label exists only in your head."],
+  ["I always ruin things like this.", "\u201CAlways\u201D is anxiety math. Count the times it went fine \u2014 that list is longer."]
+];
+let flipIdx = 0;
+const flipCard = document.getElementById('flipCard');
+function renderFlip() {
+  flipCard.classList.remove('flipped');
+  setTimeout(() => {
+    document.getElementById('flipFront').textContent = '\u201C' + FLIPS[flipIdx][0] + '\u201D';
+    document.getElementById('flipBack').textContent = FLIPS[flipIdx][1];
+  }, flipCard.classList.contains('flipped') ? 350 : 0);
+}
+document.getElementById('flipFront').textContent = '\u201C' + FLIPS[0][0] + '\u201D';
+document.getElementById('flipBack').textContent = FLIPS[0][1];
+flipCard.addEventListener('click', () => flipCard.classList.toggle('flipped'));
+document.getElementById('flipNext').addEventListener('click', () => { flipIdx = (flipIdx + 1) % FLIPS.length; renderFlip(); });
+document.getElementById('flipPrev').addEventListener('click', () => { flipIdx = (flipIdx - 1 + FLIPS.length) % FLIPS.length; renderFlip(); });
+
+document.querySelectorAll('#gymTabs .tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('#gymTabs .tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('gym-flip').style.display = tab.dataset.gym === 'flip' ? '' : 'none';
+    document.getElementById('gym-traps').style.display = tab.dataset.gym === 'traps' ? '' : 'none';
+    if (tab.dataset.gym === 'traps') startTraps();
+  });
+});
+
+/* =============== BRAIN GYM: THOUGHT TRAPS =============== */
+const TRAP_TYPES = {
+  'Mind Reading \uD83D\uDD2E': 'deciding you know what someone else is thinking \u2014 without any actual evidence.',
+  'Catastrophizing \uD83C\uDF0B': 'fast-forwarding straight to the worst possible ending.',
+  'Spotlighting \uD83D\uDD26': 'believing everyone is watching and judging you \u2014 when they\u2019re mostly thinking about themselves.'
+};
+const TRAPS = [
+  ["My coworker didn't say hi \u2014 she must be annoyed with me.", 'Mind Reading \uD83D\uDD2E'],
+  ["If I stumble over one word, the whole speech is destroyed.", 'Catastrophizing \uD83C\uDF0B'],
+  ["Everyone at the gym is staring at me doing this wrong.", 'Spotlighting \uD83D\uDD26'],
+  ["He yawned while I was talking \u2014 I'm definitely boring him.", 'Mind Reading \uD83D\uDD2E'],
+  ["If this goes badly, I'll never recover from it.", 'Catastrophizing \uD83C\uDF0B'],
+  ["I can't wear that \u2014 everyone will instantly notice the stain.", 'Spotlighting \uD83D\uDD26'],
+  ["She didn't laugh at my joke \u2014 she thinks I'm weird now.", 'Mind Reading \uD83D\uDD2E'],
+  ["I sent the email with a typo. I'm probably getting fired.", 'Catastrophizing \uD83C\uDF0B'],
+  ["I tripped on the stairs \u2014 the whole building saw it.", 'Spotlighting \uD83D\uDD26']
+];
+let trapIdx = 0, trapScore = 0, trapOrder = [];
+const trapCard = document.getElementById('trapCard');
+
+function startTraps() {
+  trapIdx = 0; trapScore = 0;
+  trapOrder = [...TRAPS].sort(() => Math.random() - 0.5);
+  renderTrap();
+}
+function renderTrap() {
+  if (trapIdx >= trapOrder.length) {
+    trapCard.innerHTML =
+      '<p class="trap-thought">You caught ' + trapScore + ' of ' + trapOrder.length + ' traps. \uD83E\uDEA4</p>' +
+      '<p class="trap-feedback">The more you can name the trap, the less power it has. Your brain pulls these on everyone \u2014 now you see them coming.</p>' +
+      '<div class="talk-actions"><button class="pill-btn" id="trapAgain">Play again \uD83D\uDD01</button></div>';
+    document.getElementById('trapAgain').addEventListener('click', startTraps);
+    return;
+  }
+  const [thought, answer] = trapOrder[trapIdx];
+  trapCard.innerHTML =
+    '<p class="talk-step-label">Trap ' + (trapIdx + 1) + ' of ' + trapOrder.length + ' \u00B7 Which trap is this?</p>' +
+    '<p class="trap-thought">\u201C' + thought + '\u201D</p>' +
+    '<div class="trap-opts">' +
+    Object.keys(TRAP_TYPES).map(t => '<button class="tab" data-trap="' + t + '">' + t + '</button>').join('') +
+    '</div><p class="trap-feedback" id="trapFeedback"></p><p class="trap-score">caught so far: ' + trapScore + '</p>';
+  trapCard.querySelectorAll('[data-trap]').forEach(btn => btn.addEventListener('click', () => {
+    const fb = document.getElementById('trapFeedback');
+    trapCard.querySelectorAll('[data-trap]').forEach(b => b.disabled = true);
+    if (btn.dataset.trap === answer) {
+      trapScore++;
+      fb.innerHTML = 'Caught it! \uD83E\uDEA4 <b>' + answer + '</b> is ' + TRAP_TYPES[answer];
+    } else {
+      fb.innerHTML = 'Close \u2014 this one\u2019s <b>' + answer + '</b>: ' + TRAP_TYPES[answer];
+    }
+    setTimeout(() => { trapIdx++; renderTrap(); }, 2600);
+  }));
+}
 </script>
 </body>
 </html>
