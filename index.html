@@ -223,11 +223,11 @@
     font-size: 1.1rem;
     color: var(--cream);
     min-height: 3.2rem;
-    display: flex; align-items: center; justify-content: center;
+    padding: 8px 0;
     line-height: 1.55;
     font-weight: 300;
   }
-  .g-step b { color: var(--gold); font-weight: 600; margin-right: 6px; }
+  .g-step b { color: var(--gold); font-weight: 600; }
 
   /* ---------- color ---------- */
   .pattern-tabs { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
@@ -251,7 +251,7 @@
   }
   .palette { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
   .swatch {
-    width: 38px; height: 38px;
+    width: 34px; height: 34px;
     border-radius: 50%;
     border: 2px solid rgba(255,255,255,0.18);
     cursor: pointer;
@@ -325,6 +325,151 @@
   }
   .fav-empty { text-align: center; color: var(--lilac-soft); font-size: 0.88rem; font-weight: 300; font-style: italic; }
 
+  /* ---------- SOS ---------- */
+  .sos-btn {
+    display: block;
+    margin: 34px auto 0;
+    background: linear-gradient(135deg, #3a2161, var(--plum-card));
+    border: 1.5px solid rgba(232, 160, 191, 0.55);
+    color: var(--cream);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    padding: 16px 38px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 0 24px rgba(232, 160, 191, 0.18);
+  }
+  .sos-btn:hover, .sos-btn:focus-visible {
+    border-color: var(--rose);
+    box-shadow: 0 0 34px rgba(232, 160, 191, 0.4);
+    transform: translateY(-2px);
+    outline: none;
+  }
+  .sos-stage {
+    max-width: 560px;
+    margin: 30px auto 0;
+    text-align: center;
+  }
+  .sos-pulse {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--rose);
+    margin: 0 auto 34px;
+    animation: sosPulse 3.5s ease-in-out infinite;
+  }
+  @keyframes sosPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(232,160,191,0.5); }
+    50% { transform: scale(1.4); box-shadow: 0 0 0 22px rgba(232,160,191,0); }
+  }
+  .sos-line {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.25rem, 4vw, 1.6rem);
+    line-height: 1.6;
+    color: var(--cream);
+    min-height: 6.5rem;
+    animation: fadeUp 1.2s ease both;
+  }
+  .sos-actions { margin-top: 36px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+
+  /* ---------- pocket scripts ---------- */
+  .scene-tabs { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .script-card {
+    background: linear-gradient(160deg, var(--plum-card), var(--plum-soft));
+    border: 1px solid rgba(230,200,122,0.25);
+    border-radius: var(--radius);
+    padding: 30px 28px;
+    max-width: 620px;
+    margin: 0 auto;
+    box-shadow: 0 10px 36px rgba(0,0,0,0.4);
+  }
+  .script-card h3 { color: var(--gold); font-size: 1.15rem; margin: 18px 0 10px; }
+  .script-card h3:first-child { margin-top: 0; }
+  .script-line {
+    background: rgba(22, 11, 38, 0.55);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 12px 12px 0;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    color: var(--cream);
+    font-weight: 300;
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+  .script-note { color: var(--lilac); font-weight: 300; font-size: 0.93rem; line-height: 1.6; }
+
+  /* ---------- lil wins ---------- */
+  .win-input-row { display: flex; gap: 10px; max-width: 560px; margin: 0 auto 24px; }
+  .win-input {
+    flex: 1;
+    background: rgba(22, 11, 38, 0.6);
+    border: 1px solid rgba(201,179,236,0.35);
+    border-radius: 999px;
+    padding: 13px 22px;
+    color: var(--cream);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+  }
+  .win-input::placeholder { color: var(--lilac-soft); }
+  .win-input:focus { outline: none; border-color: var(--gold); }
+  .win-list { max-width: 560px; margin: 0 auto; }
+  .win-item {
+    background: rgba(40,21,69,0.6);
+    border: 1px solid rgba(230,200,122,0.2);
+    border-radius: 14px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    color: var(--cream);
+    font-weight: 300;
+    font-size: 0.95rem;
+    display: flex; align-items: center; gap: 12px;
+    animation: fadeUp 0.5s ease both;
+  }
+  .win-item .spark { font-size: 1.2rem; }
+  .win-count { text-align: center; color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 18px; min-height: 1.5rem; }
+
+  /* ---------- talk it out ---------- */
+  .talk-card {
+    background: linear-gradient(160deg, var(--plum-card), var(--plum-soft));
+    border: 1px solid rgba(230,200,122,0.25);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    max-width: 620px;
+    margin: 0 auto;
+    box-shadow: 0 10px 36px rgba(0,0,0,0.4);
+  }
+  .talk-step-label { color: var(--gold); font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; font-weight: 500; }
+  .talk-q { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--cream); line-height: 1.5; margin-bottom: 8px; }
+  .talk-hint { color: var(--lilac); font-weight: 300; font-size: 0.9rem; line-height: 1.55; margin-bottom: 16px; }
+  .talk-input {
+    width: 100%;
+    min-height: 90px;
+    background: rgba(22, 11, 38, 0.6);
+    border: 1px solid rgba(201,179,236,0.35);
+    border-radius: 14px;
+    padding: 14px 16px;
+    color: var(--cream);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    resize: vertical;
+  }
+  .talk-input:focus { outline: none; border-color: var(--gold); }
+  .talk-actions { display: flex; justify-content: center; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+  .talk-recap { background: rgba(22,11,38,0.55); border-left: 3px solid var(--gold); border-radius: 0 12px 12px 0; padding: 12px 16px; margin-bottom: 10px; color: var(--cream); font-weight: 300; font-size: 0.95rem; line-height: 1.55; }
+  .talk-recap b { color: var(--gold); font-weight: 500; display: block; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+
+  .scope-note {
+    margin-top: 46px;
+    color: var(--lilac-soft);
+    font-size: 0.8rem;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .scope-note b { color: var(--lilac); font-weight: 500; }
+
   /* ---------- footer ---------- */
   footer {
     text-align: center;
@@ -375,7 +520,23 @@
         <h2>Boost</h2>
         <p>A gentle word of encouragement whenever you need one. Save your favorites.</p>
       </button>
+      <button class="door" data-go="scripts">
+        <span class="icon">🗣️</span>
+        <h2>Pocket Scripts</h2>
+        <p>Calm lines to read right before the phone call, the order, the question.</p>
+      </button>
+      <button class="door" data-go="wins">
+        <span class="icon">🌱</span>
+        <h2>Lil Wins</h2>
+        <p>Log the brave thing you did — no win too small — and get celebrated for it.</p>
+      </button>
+      <button class="door" data-go="talk">
+        <span class="icon">💭</span>
+        <h2>Talk It Out</h2>
+        <p>Walk a worry from worst-case to likely-case, one gentle step at a time.</p>
+      </button>
     </div>
+    <button class="sos-btn" data-go="sos">🫧 Calm me down — my nerves are spiraling</button>
   </section>
 
   <!-- ============ BREATHE ============ -->
@@ -406,6 +567,13 @@
       <button class="tab active" data-pattern="mandala">Mandala</button>
       <button class="tab" data-pattern="bow">Bow 🎀</button>
       <button class="tab" data-pattern="flower">Flower</button>
+      <button class="tab" data-pattern="butterfly">Butterfly</button>
+      <button class="tab" data-pattern="hearts">Hearts</button>
+      <button class="tab" data-pattern="sunburst">Sunburst</button>
+      <button class="tab" data-pattern="honeycomb">Honeycomb</button>
+      <button class="tab" data-pattern="glass">Stained Glass</button>
+      <button class="tab" data-pattern="night">Night Sky</button>
+      <button class="tab" data-pattern="gift">Gift Box</button>
     </div>
     <div class="palette" id="palette"></div>
     <div class="canvas-frame"><div id="patternHolder"></div></div>
@@ -435,9 +603,55 @@
     </div>
   </section>
 
+  <!-- ============ SOS ============ -->
+  <section id="view-sos" class="view">
+    <button class="back" data-go="home">🎀 back to the corner</button>
+    <div class="sos-stage">
+      <div class="sos-pulse" aria-hidden="true"></div>
+      <p class="sos-line" id="sosLine">Okay. You're here. That was the right move. 💜</p>
+      <div class="sos-actions" id="sosActions">
+        <button class="pill-btn" id="sosNext">Next</button>
+      </div>
+      <p class="scope-note">This is a calming tool for everyday anxiety and nerves — not medical care.<br>
+      If you're in crisis or having thoughts of harming yourself, please call or text <b>988</b> (Suicide &amp; Crisis Lifeline, US) — real people, 24/7.</p>
+    </div>
+  </section>
+
+  <!-- ============ POCKET SCRIPTS ============ -->
+  <section id="view-scripts" class="view">
+    <button class="back" data-go="home">🎀 back to the corner</button>
+    <h2 class="section-title">Pocket Scripts</h2>
+    <p class="section-sub">Pick the moment you're facing. Read your lines. You've got this.</p>
+    <div class="scene-tabs" id="sceneTabs"></div>
+    <div class="script-card" id="scriptCard"></div>
+  </section>
+
+  <!-- ============ LIL WINS ============ -->
+  <section id="view-wins" class="view">
+    <button class="back" data-go="home">🎀 back to the corner</button>
+    <h2 class="section-title">Lil Wins</h2>
+    <p class="section-sub">You did a brave thing? It counts. It ALL counts. Log it and take your confetti.</p>
+    <p class="win-count" id="winCount"></p>
+    <div class="win-input-row">
+      <input class="win-input" id="winInput" maxlength="120" placeholder="I made the phone call. I went to the thing. I asked the question…">
+      <button class="pill-btn" id="winBtn" style="margin-top:0;">Celebrate 🎉</button>
+    </div>
+    <div class="win-list" id="winList"></div>
+  </section>
+
+  <!-- ============ TALK IT OUT ============ -->
+  <section id="view-talk" class="view">
+    <button class="back" data-go="home">🎀 back to the corner</button>
+    <h2 class="section-title">Talk It Out</h2>
+    <p class="section-sub">Let's walk this worry all the way through — it shrinks when you look at it directly.</p>
+    <div class="talk-card" id="talkCard"></div>
+  </section>
+
   <footer>
-    Made with <span class="heart">💜</span> by Cancan · This corner is comfort, not medical advice.<br>
-    If things feel heavy, reaching out to someone you trust — or a professional — is a brave move too.
+    Made with <span class="heart">💜</span> by Cancan · Cancan's Calm Corner is a comfort space for everyday nerves and social anxiety.<br>
+    It is not medical advice, therapy, or professional mental health care — and it's no substitute for any of those.<br>
+    If things feel heavy, talking to someone you trust or a professional is a brave move.
+    If you're in crisis, call or text <b style="color: var(--lilac); font-weight: 500;">988</b> (Suicide &amp; Crisis Lifeline, US), available 24/7.
   </footer>
 </div>
 
@@ -571,34 +785,79 @@ gBtn.addEventListener('click', () => {
 });
 
 /* =============== COLOR =============== */
-const COLORS = ['#e6c87a', '#a98fd6', '#7e57c2', '#e8a0bf', '#8fd6c9', '#f6efff', '#d4845f', '#5c6fc9'];
-let activeColor = COLORS[0];
+const SOLIDS = [
+  '#e6c87a', '#f4dfa3', '#d4845f', '#c9536f', '#e8a0bf', '#f2c4d6',
+  '#7e57c2', '#a98fd6', '#cbb6f0', '#5c6fc9', '#8fd6c9', '#5fb6a5',
+  '#7fb86b', '#f6efff', '#8a8fa3', '#241540'
+];
+const GRADIENTS = [
+  { id: 'gSunset',   stops: ['#e6c87a', '#e8a0bf'] },
+  { id: 'gTwilight', stops: ['#a98fd6', '#5c6fc9'] },
+  { id: 'gRoyal',    stops: ['#7e57c2', '#241540'] },
+  { id: 'gSea',      stops: ['#8fd6c9', '#5c6fc9'] },
+  { id: 'gRose',     stops: ['#e8a0bf', '#7e57c2'] },
+  { id: 'gHoney',    stops: ['#f4dfa3', '#d4845f'] },
+  { id: 'gMeadow',   stops: ['#7fb86b', '#8fd6c9'] },
+  { id: 'gMoonlight',stops: ['#f6efff', '#a98fd6'] },
+];
+
+let activeColor = SOLIDS[0];
 const paletteEl = document.getElementById('palette');
 
-COLORS.forEach((c, i) => {
+function addSwatch(cssBackground, fillValue, selected) {
   const sw = document.createElement('button');
-  sw.className = 'swatch' + (i === 0 ? ' selected' : '');
-  sw.style.background = c;
-  sw.setAttribute('aria-label', 'Color ' + c);
+  sw.className = 'swatch' + (selected ? ' selected' : '');
+  sw.style.background = cssBackground;
+  sw.setAttribute('aria-label', 'Color swatch');
   sw.addEventListener('click', () => {
-    activeColor = c;
+    activeColor = fillValue;
     document.querySelectorAll('.swatch').forEach(s => s.classList.remove('selected'));
     sw.classList.add('selected');
   });
   paletteEl.appendChild(sw);
-});
+}
+SOLIDS.forEach((c, i) => addSwatch(c, c, i === 0));
+GRADIENTS.forEach(g => addSwatch(
+  'linear-gradient(135deg, ' + g.stops[0] + ', ' + g.stops[1] + ')',
+  'url(#' + g.id + ')', false
+));
+
+function gradientDefs() {
+  return '<defs>' + GRADIENTS.map(g =>
+    `<linearGradient id="${g.id}" x1="0" y1="0" x2="1" y2="1">` +
+    `<stop offset="0%" stop-color="${g.stops[0]}"/>` +
+    `<stop offset="100%" stop-color="${g.stops[1]}"/></linearGradient>`
+  ).join('') + '</defs>';
+}
 
 const BASE_FILL = '#2e1a4d';
 const STROKE = '#e6c87a';
 const holder = document.getElementById('patternHolder');
 
-/* Build mandala programmatically: rings of petals */
+/* ---------- shared helpers ---------- */
+function pt(cx, cy, r, a) {
+  return (cx + r * Math.cos(a)).toFixed(1) + ' ' + (cy + r * Math.sin(a)).toFixed(1);
+}
+function sector(cx, cy, r1, r2, a1, a2, f) {
+  return `<path data-fill ${f} d="M ${pt(cx,cy,r2,a1)} A ${r2} ${r2} 0 0 1 ${pt(cx,cy,r2,a2)} ` +
+         `L ${pt(cx,cy,r1,a2)} A ${r1} ${r1} 0 0 0 ${pt(cx,cy,r1,a1)} Z"/>`;
+}
+function seededRandom(seed) {
+  return function () {
+    seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+/* ---------- patterns ---------- */
 function mandalaSVG() {
   const cx = 250, cy = 250;
   let shapes = '';
-  shapes += ring(cx, cy, 8, 55, 105, 0);       /* inner petals */
-  shapes += ring(cx, cy, 12, 110, 170, 15);    /* middle petals */
-  shapes += ring(cx, cy, 16, 175, 235, 0);     /* outer petals */
+  shapes += ring(cx, cy, 8, 55, 105, 0);
+  shapes += ring(cx, cy, 12, 110, 170, 15);
+  shapes += ring(cx, cy, 16, 175, 235, 0);
   shapes += `<circle data-fill cx="${cx}" cy="${cy}" r="48" fill="${BASE_FILL}" stroke="${STROKE}" stroke-width="2"/>`;
   shapes += `<circle data-fill cx="${cx}" cy="${cy}" r="24" fill="${BASE_FILL}" stroke="${STROKE}" stroke-width="2"/>`;
   return `<svg id="artSvg" viewBox="0 0 500 500" width="460" height="460" xmlns="http://www.w3.org/2000/svg">${shapes}</svg>`;
@@ -616,34 +875,23 @@ function mandalaSVG() {
     }
     return out;
   }
-  function pt(cx, cy, r, a) {
-    return (cx + r * Math.cos(a)).toFixed(1) + ' ' + (cy + r * Math.sin(a)).toFixed(1);
-  }
 }
 
-/* Bow: hand-drawn regions */
 function bowSVG() {
   const f = `fill="${BASE_FILL}" stroke="${STROKE}" stroke-width="2.5"`;
   return `<svg id="artSvg" viewBox="0 0 500 420" width="460" height="386" xmlns="http://www.w3.org/2000/svg">
-    <!-- left loop -->
     <path data-fill ${f} d="M 235 170 C 160 80, 50 80, 45 160 C 42 230, 150 235, 235 195 Z"/>
     <path data-fill ${f} d="M 235 182 C 175 145, 95 135, 80 165 C 70 195, 165 205, 235 192 Z"/>
-    <!-- right loop -->
     <path data-fill ${f} d="M 265 170 C 340 80, 450 80, 455 160 C 458 230, 350 235, 265 195 Z"/>
     <path data-fill ${f} d="M 265 182 C 325 145, 405 135, 420 165 C 430 195, 335 205, 265 192 Z"/>
-    <!-- knot -->
     <ellipse data-fill ${f} cx="250" cy="183" rx="34" ry="30"/>
-    <!-- left tail -->
     <path data-fill ${f} d="M 232 210 C 200 280, 175 330, 140 385 L 185 370 L 200 400 C 225 330, 238 270, 244 213 Z"/>
-    <!-- right tail -->
     <path data-fill ${f} d="M 268 210 C 300 280, 325 330, 360 385 L 315 370 L 300 400 C 275 330, 262 270, 256 213 Z"/>
-    <!-- tail stripes -->
     <path data-fill ${f} d="M 214 265 C 222 268, 232 268, 240 264 L 236 290 C 229 293, 219 292, 212 288 Z"/>
     <path data-fill ${f} d="M 286 265 C 278 268, 268 268, 260 264 L 264 290 C 271 293, 281 292, 288 288 Z"/>
   </svg>`;
 }
 
-/* Flower: petals + center + leaves */
 function flowerSVG() {
   const cx = 250, cy = 210;
   const f = `fill="${BASE_FILL}" stroke="${STROKE}" stroke-width="2.5"`;
@@ -666,10 +914,140 @@ function flowerSVG() {
   </svg>`;
 }
 
-const PATTERNS = { mandala: mandalaSVG, bow: bowSVG, flower: flowerSVG };
+function butterflySVG() {
+  const f = `fill="${BASE_FILL}" stroke="${STROKE}" stroke-width="2.5"`;
+  const wings = `
+    <path data-fill ${f} d="M 240 195 C 150 80, 45 95, 58 185 C 66 245, 170 250, 240 218 Z"/>
+    <path data-fill ${f} d="M 240 240 C 165 255, 95 285, 112 348 C 126 398, 215 372, 242 292 Z"/>
+    <circle data-fill ${f} cx="135" cy="172" r="26"/>
+    <circle data-fill ${f} cx="158" cy="308" r="19"/>`;
+  return `<svg id="artSvg" viewBox="0 0 500 460" width="460" height="424" xmlns="http://www.w3.org/2000/svg">
+    <g>${wings}</g>
+    <g transform="translate(500,0) scale(-1,1)">${wings}</g>
+    <ellipse data-fill ${f} cx="250" cy="245" rx="17" ry="82"/>
+    <circle data-fill ${f} cx="250" cy="142" r="20"/>
+    <path d="M 242 128 C 225 100, 205 88, 188 82" fill="none" stroke="${STROKE}" stroke-width="3" stroke-linecap="round"/>
+    <path d="M 258 128 C 275 100, 295 88, 312 82" fill="none" stroke="${STROKE}" stroke-width="3" stroke-linecap="round"/>
+  </svg>`;
+}
+
+function heartsSVG() {
+  const HEART = 'M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z';
+  const spots = [
+    [40, 30, 2.4, -12], [215, 22, 1.6, 8], [355, 40, 3.0, 14],
+    [95, 165, 3.6, -6], [320, 195, 2.1, 18], [25, 295, 1.9, 10],
+    [185, 290, 2.8, -14], [395, 318, 1.7, -8], [95, 405, 1.5, 12], [285, 392, 2.3, 6]
+  ];
+  const f = `fill="${BASE_FILL}" stroke="${STROKE}"`;
+  const shapes = spots.map(([x, y, s, r]) =>
+    `<path data-fill ${f} stroke-width="${(2.4 / s).toFixed(2)}" d="${HEART}" transform="translate(${x},${y}) rotate(${r} 16 15) scale(${s})"/>`
+  ).join('');
+  return `<svg id="artSvg" viewBox="0 0 500 470" width="460" height="432" xmlns="http://www.w3.org/2000/svg">${shapes}</svg>`;
+}
+
+function sunburstSVG() {
+  const cx = 250, cy = 250;
+  const f = `fill="${BASE_FILL}" stroke="${STROKE}" stroke-width="2"`;
+  let out = `<circle data-fill ${f} cx="${cx}" cy="${cy}" r="42"/>`;
+  const rings = [[50, 95, 8, 0], [100, 145, 12, 15], [150, 195, 16, 0], [200, 240, 20, 9]];
+  rings.forEach(([r1, r2, count, offsetDeg]) => {
+    for (let i = 0; i < count; i++) {
+      const a1 = (i / count) * Math.PI * 2 + offsetDeg * Math.PI / 180;
+      const a2 = ((i + 0.92) / count) * Math.PI * 2 + offsetDeg * Math.PI / 180;
+      out += sector(cx, cy, r1, r2, a1, a2, f);
+    }
+  });
+  return `<svg id="artSvg" viewBox="0 0 500 500" width="460" height="460" xmlns="http://www.w3.org/2000/svg">${out}</svg>`;
+}
+
+function honeycombSVG() {
+  const R = 34, f = `fill="${BASE_FILL}" stroke="${STROKE}" stroke-width="2.5"`;
+  const dx = 1.5 * R, dy = Math.sqrt(3) * R;
+  let out = '';
+  for (let col = 0; col < 9; col++) {
+    for (let row = 0; row < 7; row++) {
+      const x = 55 + col * dx;
+      const y = 55 + row * dy + (col % 2 ? dy / 2 : 0);
+      if (x + R > 495 || y + R > 435) continue;
+      let d = '';
+      for (let k = 0; k < 6; k++) {
+        const a = (k / 6) * Math.PI * 2;
+        d += (k ? 'L ' : 'M ') + pt(x, y, R - 2, a) + ' ';
+      }
+      out += `<path data-fill ${f} d="${d}Z"/>`;
+    }
+  }
+  return `<svg id="artSvg" viewBox="0 0 500 440" width="460" height="405" xmlns="http://www.w3.org/2000/svg">${out}</svg>`;
+}
+
+function glassSVG() {
+  const rand = seededRandom(42);
+  const cols = 6, rows = 5, W = 500, H = 420;
+  const f = `fill="${BASE_FILL}" stroke="${STROKE}" stroke-width="3"`;
+  const pts = [];
+  for (let j = 0; j <= rows; j++) {
+    pts[j] = [];
+    for (let i = 0; i <= cols; i++) {
+      let x = (i / cols) * (W - 24) + 12;
+      let y = (j / rows) * (H - 24) + 12;
+      if (i > 0 && i < cols) x += (rand() - 0.5) * 46;
+      if (j > 0 && j < rows) y += (rand() - 0.5) * 40;
+      pts[j][i] = [x.toFixed(1), y.toFixed(1)];
+    }
+  }
+  let out = '';
+  for (let j = 0; j < rows; j++) {
+    for (let i = 0; i < cols; i++) {
+      const a = pts[j][i], b = pts[j][i + 1], c = pts[j + 1][i + 1], d = pts[j + 1][i];
+      out += `<polygon data-fill ${f} points="${a} ${b} ${c} ${d}"/>`;
+    }
+  }
+  return `<svg id="artSvg" viewBox="0 0 500 420" width="460" height="386" xmlns="http://www.w3.org/2000/svg">${out}</svg>`;
+}
+
+function nightSVG() {
+  const f = `fill="${BASE_FILL}" stroke="${STROKE}" stroke-width="2.5"`;
+  function star(cx, cy, r) {
+    return `<path data-fill ${f} d="M ${cx} ${cy - r} Q ${cx} ${cy} ${cx + r} ${cy} Q ${cx} ${cy} ${cx} ${cy + r} Q ${cx} ${cy} ${cx - r} ${cy} Q ${cx} ${cy} ${cx} ${cy - r} Z"/>`;
+  }
+  return `<svg id="artSvg" viewBox="0 0 500 460" width="460" height="424" xmlns="http://www.w3.org/2000/svg">
+    <path data-fill ${f} d="M 160 75 A 100 100 0 1 0 160 275 A 76 76 0 1 1 160 75 Z"/>
+    <ellipse data-fill ${f} cx="385" cy="135" rx="62" ry="15" transform="rotate(-18 385 135)"/>
+    <circle data-fill ${f} cx="385" cy="135" r="36"/>
+    <circle data-fill ${f} cx="330" cy="330" r="26"/>
+    ${star(290, 60, 26)}${star(440, 250, 22)}${star(80, 350, 24)}${star(200, 390, 18)}
+    ${star(420, 390, 15)}${star(250, 210, 14)}${star(60, 140, 13)}
+  </svg>`;
+}
+
+function giftSVG() {
+  const f = `fill="${BASE_FILL}" stroke="${STROKE}" stroke-width="2.5"`;
+  const dots = [[160, 255], [195, 320], [150, 365], [340, 255], [310, 325], [350, 365]]
+    .map(([x, y]) => `<circle data-fill ${f} cx="${x}" cy="${y}" r="13"/>`).join('');
+  return `<svg id="artSvg" viewBox="0 0 500 460" width="460" height="424" xmlns="http://www.w3.org/2000/svg">
+    <rect data-fill ${f} x="110" y="205" width="123" height="195" rx="6"/>
+    <rect data-fill ${f} x="267" y="205" width="123" height="195" rx="6"/>
+    <rect data-fill ${f} x="233" y="205" width="34" height="195"/>
+    <rect data-fill ${f} x="95" y="160" width="138" height="42" rx="6"/>
+    <rect data-fill ${f} x="267" y="160" width="138" height="42" rx="6"/>
+    <rect data-fill ${f} x="233" y="160" width="34" height="42"/>
+    <path data-fill ${f} d="M 248 150 C 205 98, 150 108, 163 142 C 170 162, 222 158, 248 152 Z"/>
+    <path data-fill ${f} d="M 252 150 C 295 98, 350 108, 337 142 C 330 162, 278 158, 252 152 Z"/>
+    <circle data-fill ${f} cx="250" cy="148" r="15"/>
+    ${dots}
+  </svg>`;
+}
+
+const PATTERNS = {
+  mandala: mandalaSVG, bow: bowSVG, flower: flowerSVG, butterfly: butterflySVG,
+  hearts: heartsSVG, sunburst: sunburstSVG, honeycomb: honeycombSVG,
+  glass: glassSVG, night: nightSVG, gift: giftSVG
+};
 
 function loadPattern(name) {
-  holder.innerHTML = PATTERNS[name]();
+  let svgStr = PATTERNS[name]();
+  svgStr = svgStr.replace(/(<svg[^>]*>)/, '$1' + gradientDefs());
+  holder.innerHTML = svgStr;
   holder.querySelectorAll('[data-fill]').forEach(el => {
     el.addEventListener('click', () => { el.setAttribute('fill', activeColor); });
   });
@@ -689,7 +1067,6 @@ document.getElementById('clearBtn').addEventListener('click', () => {
   loadPattern(active);
 });
 
-/* Save artwork as PNG with the dark background */
 document.getElementById('saveBtn').addEventListener('click', () => {
   const svg = document.getElementById('artSvg');
   const xml = new XMLSerializer().serializeToString(svg);
@@ -711,26 +1088,26 @@ document.getElementById('saveBtn').addEventListener('click', () => {
 
 /* =============== BOOST =============== */
 const QUOTES = [
-  ['You don\u2019t have to feel ready. You just have to begin.', 'Auntie Cancan'],
-  ['Nervous and brave can live in the same body at the same time.', 'Auntie Cancan'],
-  ['The phone call is three minutes. The dread is three hours. Make the call.', 'Auntie Cancan'],
-  ['You\u2019ve survived 100% of your hardest days so far. That\u2019s a perfect record.', 'Auntie Cancan'],
-  ['Be gentle with yourself — you\u2019re doing the best you can with a brain that worries because it cares.', 'Auntie Cancan'],
-  ['Awkward isn\u2019t fatal. Nobody is replaying that moment but you.', 'Auntie Cancan'],
-  ['Small steps still count as steps. Tiny wins still count as wins.', 'Auntie Cancan'],
+  ['You don\u2019t have to feel ready. You just have to begin.', ''],
+  ['Nervous and brave can live in the same body at the same time.', ''],
+  ['The phone call is three minutes. The dread is three hours. Make the call.', ''],
+  ['You\u2019ve survived 100% of your hardest days so far. That\u2019s a perfect record.', ''],
+  ['Be gentle with yourself — you\u2019re doing the best you can with a brain that worries because it cares.', ''],
+  ['Awkward isn\u2019t fatal. Nobody is replaying that moment but you.', ''],
+  ['Small steps still count as steps. Tiny wins still count as wins.', ''],
   ['What lies behind us and what lies before us are tiny matters compared to what lies within us.', 'Ralph Waldo Emerson'],
   ['It is not because things are difficult that we do not dare; it is because we do not dare that things are difficult.', 'Seneca'],
   ['The wound is the place where the Light enters you.', 'Rumi'],
   ['Nothing diminishes anxiety faster than action.', 'Walter Anderson'],
-  ['You wouldn\u2019t talk to your best friend the way you talk to yourself. Try friend-voice today.', 'Auntie Cancan'],
+  ['You wouldn\u2019t talk to your best friend the way you talk to yourself. Try friend-voice today.', ''],
   ['Beginnings are usually scary and endings are usually sad, but it\u2019s everything in between that makes it worth living.', 'Bob Marley'],
-  ['Breathe. It\u2019s just a bad moment, not a bad life.', 'Auntie Cancan'],
-  ['They\u2019re probably not thinking about you — they\u2019re busy worrying what YOU think of THEM.', 'Auntie Cancan'],
+  ['Breathe. It\u2019s just a bad moment, not a bad life.', ''],
+  ['They\u2019re probably not thinking about you — they\u2019re busy worrying what YOU think of THEM.', ''],
   ['Courage doesn\u2019t always roar. Sometimes it\u2019s the quiet voice saying \u201CI\u2019ll try again tomorrow.\u201D', 'Mary Anne Radmacher'],
-  ['You are allowed to take up space, ask the question, and order the complicated coffee.', 'Auntie Cancan'],
+  ['You are allowed to take up space, ask the question, and order the complicated coffee.', ''],
   ['A river cuts through rock not because of its power, but because of its persistence.', 'James N. Watkins'],
-  ['Rest is productive. Recharging IS doing something.', 'Auntie Cancan'],
-  ['You showed up today. That already counts.', 'Auntie Cancan'],
+  ['Rest is productive. Recharging IS doing something.', ''],
+  ['You showed up today. That already counts.', ''],
 ];
 
 const quoteText = document.getElementById('quoteText');
@@ -746,7 +1123,7 @@ function newQuote() {
   lastIdx = idx;
   currentQuote = QUOTES[idx];
   quoteText.textContent = currentQuote[0];
-  quoteAuthor.textContent = '— ' + currentQuote[1];
+  quoteAuthor.textContent = currentQuote[1] ? '— ' + currentQuote[1] : '';
 }
 newQuote();
 
@@ -765,7 +1142,7 @@ function renderFavs() {
     return;
   }
   favHolder.innerHTML = favorites
-    .map(q => '<div class="fav-item">\u201C' + q[0] + '\u201D — ' + q[1] + '</div>')
+    .map(q => '<div class="fav-item">\u201C' + q[0] + '\u201D' + (q[1] ? ' — ' + q[1] : '') + '</div>')
     .join('');
 }
 
@@ -789,6 +1166,251 @@ function confettiBurst(x, y) {
     setTimeout(() => p.remove(), 1500);
   }
 }
+
+/* =============== SOS =============== */
+const SOS_LINES = [
+  "Okay. You're here. That was the right move. \uD83D\uDC9C",
+  "This feeling is a wave. It rises, it peaks \u2014 and it always, always comes back down.",
+  "First, your body. Drop your shoulders. Unclench your jaw. Loosen your hands.",
+  "Now breathe in slowly through your nose\u2026 2\u2026 3\u2026 4\u2026",
+  "And let it out through your mouth, long and slow\u2026 2\u2026 3\u2026 4\u2026 5\u2026 6\u2026",
+  "One more time. In\u2026 and all the way out. You're doing it.",
+  "Feel your feet on the floor. The ground is holding you. It's not going anywhere.",
+  "You are safe in this exact moment. And this moment is the only one you have to handle.",
+  "You're going to be okay. Want to keep breathing together, or ground yourself with your senses?"
+];
+const sosLine = document.getElementById('sosLine');
+const sosActions = document.getElementById('sosActions');
+let sosIdx = 0, sosTimer = null;
+
+function showSOSLine() {
+  sosLine.style.animation = 'none';
+  void sosLine.offsetWidth;
+  sosLine.style.animation = '';
+  sosLine.textContent = SOS_LINES[sosIdx];
+  if (sosIdx === SOS_LINES.length - 1) {
+    sosActions.innerHTML = '';
+    const b1 = mkBtn('Breathe with me \uD83C\uDF2C\uFE0F', 'pill-btn', () => goView('breathe'));
+    const b2 = mkBtn('Ground me \uD83C\uDF31', 'pill-btn ghost', () => goView('breathe', true));
+    const b3 = mkBtn("I'm feeling steadier \uD83D\uDC9C", 'pill-btn ghost', () => goView('home'));
+    sosActions.append(b1, b2, b3);
+  }
+}
+function mkBtn(label, cls, fn) {
+  const b = document.createElement('button');
+  b.className = cls; b.textContent = label;
+  b.addEventListener('click', fn);
+  return b;
+}
+function goView(name, scrollGrounding) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-' + name).classList.add('active');
+  stopSOS();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (scrollGrounding) setTimeout(() => document.querySelector('.grounding').scrollIntoView({ behavior: 'smooth' }), 350);
+}
+function startSOS() {
+  sosIdx = 0;
+  sosActions.innerHTML = '';
+  sosActions.appendChild(mkBtn('Next', 'pill-btn', advanceSOS));
+  showSOSLine();
+  scheduleSOS();
+}
+function scheduleSOS() {
+  clearTimeout(sosTimer);
+  if (sosIdx < SOS_LINES.length - 1) sosTimer = setTimeout(advanceSOS, 9000);
+}
+function advanceSOS() {
+  if (sosIdx >= SOS_LINES.length - 1) return;
+  sosIdx++;
+  showSOSLine();
+  scheduleSOS();
+}
+function stopSOS() { clearTimeout(sosTimer); }
+
+document.querySelectorAll('[data-go="sos"]').forEach(b => b.addEventListener('click', startSOS));
+document.querySelectorAll('[data-go]').forEach(btn => {
+  btn.addEventListener('click', () => { if (btn.dataset.go !== 'sos') stopSOS(); });
+});
+
+/* =============== POCKET SCRIPTS =============== */
+const SCENES = [
+  {
+    name: '\uD83D\uDCDE Phone call',
+    script: [
+      '\u201CHi, this is ___. I\u2019m calling about ___.\u201D',
+      '\u201CSorry, could you repeat that?\u201D \u2014 totally allowed, as many times as you need.',
+      '\u201CThank you so much, have a good one!\u201D \u2014 your exit line, ready whenever.'
+    ],
+    reality: 'Most calls last under three minutes, and the person answering does this all day \u2014 they\u2019re focused on helping you, not judging you.',
+    remember: 'You can write notes before dialing. Professionals do it too.'
+  },
+  {
+    name: '\uD83C\uDF5F Ordering',
+    script: [
+      '\u201CHi! Can I get a ___, please?\u201D',
+      '\u201CActually, give me one second\u201D \u2014 a fine thing to say while you decide.',
+      '\u201CThat\u2019s all, thank you!\u201D'
+    ],
+    reality: 'The cashier will forget this interaction in about 90 seconds. To them it\u2019s the 200th order today \u2014 there is no spotlight.',
+    remember: 'Mixing up your words is normal. People do it constantly and nobody keeps score.'
+  },
+  {
+    name: '\uD83D\uDE4B Speaking up',
+    script: [
+      '\u201CI have a question about ___.\u201D',
+      '\u201CCould you go over that part one more time?\u201D',
+      '\u201CI might be missing something, but what about ___?\u201D'
+    ],
+    reality: 'If you\u2019re confused, odds are half the room is too \u2014 and they\u2019ll be silently grateful you asked.',
+    remember: 'Questions make you look engaged, not behind. Instructors and managers consistently say they wish people asked more.'
+  },
+  {
+    name: '\uD83D\uDC4B Meeting someone',
+    script: [
+      '\u201CHi, I\u2019m ___. Nice to meet you!\u201D',
+      '\u201CHow do you know everyone here?\u201D \u2014 the universal conversation opener.',
+      '\u201CWhat are you working on lately?\u201D \u2014 people love this one.'
+    ],
+    reality: 'You don\u2019t have to be interesting \u2014 you just have to be interested. Asking questions does most of the work for you.',
+    remember: 'Silences feel ten times longer in your head than they actually are.'
+  },
+  {
+    name: '\uD83C\uDD98 Asking for help',
+    script: [
+      '\u201CHey, do you have a minute? I\u2019m stuck on ___.\u201D',
+      '\u201CI\u2019ve tried ___ and ___, but I\u2019m not sure what\u2019s next.\u201D',
+      '\u201CThanks \u2014 that really helps.\u201D'
+    ],
+    reality: 'Asking for help after trying shows competence, not weakness. People genuinely like being asked \u2014 it feels good to be useful.',
+    remember: 'The version of you that asks gets unstuck hours sooner than the version that suffers silently.'
+  },
+  {
+    name: '\uD83D\uDE45 Saying no',
+    script: [
+      '\u201CI can\u2019t take that on right now, but thank you for thinking of me.\u201D',
+      '\u201CThat doesn\u2019t work for me, but maybe ___ instead?\u201D',
+      '\u201CLet me check my schedule and get back to you.\u201D \u2014 buys you space to decide calmly.'
+    ],
+    reality: '\u201CNo\u201D is a complete sentence. You don\u2019t owe anyone a five-paragraph essay of reasons.',
+    remember: 'People respect clear boundaries more than reluctant yeses that turn into resentment.'
+  }
+];
+
+const sceneTabs = document.getElementById('sceneTabs');
+const scriptCard = document.getElementById('scriptCard');
+
+SCENES.forEach((s, i) => {
+  const t = document.createElement('button');
+  t.className = 'tab' + (i === 0 ? ' active' : '');
+  t.textContent = s.name;
+  t.addEventListener('click', () => {
+    sceneTabs.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    renderScene(s);
+  });
+  sceneTabs.appendChild(t);
+});
+
+function renderScene(s) {
+  scriptCard.innerHTML =
+    '<h3>Your lines</h3>' +
+    s.script.map(l => '<div class="script-line">' + l + '</div>').join('') +
+    '<h3>Reality check</h3><p class="script-note">' + s.reality + '</p>' +
+    '<h3>Remember</h3><p class="script-note">' + s.remember + '</p>';
+}
+renderScene(SCENES[0]);
+
+/* =============== LIL WINS =============== */
+const winInput = document.getElementById('winInput');
+const winBtn = document.getElementById('winBtn');
+const winList = document.getElementById('winList');
+const winCount = document.getElementById('winCount');
+let wins = [];
+const WIN_REACTIONS = ['So proud of you!', 'Look at you GO!', 'That took guts!', 'Casual hero behavior.', 'See? You CAN.', 'Adding it to your highlight reel.', 'Braver than you give yourself credit for.'];
+
+function addWin() {
+  const text = winInput.value.trim();
+  if (!text) return;
+  wins.unshift(text);
+  winInput.value = '';
+  renderWins();
+  const rect = winBtn.getBoundingClientRect();
+  confettiBurst(rect.left + rect.width / 2, rect.top);
+}
+winBtn.addEventListener('click', addWin);
+winInput.addEventListener('keydown', e => { if (e.key === 'Enter') addWin(); });
+
+function renderWins() {
+  winCount.textContent = wins.length === 0 ? '' :
+    wins.length + (wins.length === 1 ? ' win logged. ' : ' wins logged. ') +
+    WIN_REACTIONS[Math.floor(Math.random() * WIN_REACTIONS.length)];
+  winList.innerHTML = wins.map(w =>
+    '<div class="win-item"><span class="spark">\u2728</span><span>' + escapeHTML(w) + '</span></div>'
+  ).join('');
+}
+function escapeHTML(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+/* =============== TALK IT OUT =============== */
+const TALK_STEPS = [
+  { label: 'Step 1 of 4', q: "What's the worry?", hint: 'Just name it plainly. "I have to make a phone call tomorrow and I\u2019m dreading it."', key: 'worry' },
+  { label: 'Step 2 of 4', q: "What's the worst case your brain is selling you?", hint: 'Go ahead, write the catastrophe out. Worries hate being written down \u2014 they sound less convincing in ink.', key: 'worst' },
+  { label: 'Step 3 of 4', q: "Okay \u2014 now what's the LIKELY case?", hint: 'Based on every other time, what will probably actually happen? Boring answers welcome. Boring answers are the point.', key: 'likely' },
+  { label: 'Step 4 of 4', q: 'If your best friend had this exact worry, what would you tell them?', hint: 'Write it like you\u2019re talking to someone you love. Then notice who you just wrote it to.', key: 'friend' }
+];
+const talkCard = document.getElementById('talkCard');
+let talkIdx = 0, talkAnswers = {};
+
+function renderTalk() {
+  if (talkIdx >= TALK_STEPS.length) { renderTalkRecap(); return; }
+  const s = TALK_STEPS[talkIdx];
+  talkCard.innerHTML =
+    '<p class="talk-step-label">' + s.label + '</p>' +
+    '<p class="talk-q">' + s.q + '</p>' +
+    '<p class="talk-hint">' + s.hint + '</p>' +
+    '<textarea class="talk-input" id="talkInput">' + (talkAnswers[s.key] || '') + '</textarea>' +
+    '<div class="talk-actions">' +
+    (talkIdx > 0 ? '<button class="pill-btn ghost" id="talkBack">Back</button>' : '') +
+    '<button class="pill-btn" id="talkNext">' + (talkIdx === TALK_STEPS.length - 1 ? 'Show me what I said' : 'Next') + '</button>' +
+    '</div>';
+  document.getElementById('talkNext').addEventListener('click', () => {
+    talkAnswers[TALK_STEPS[talkIdx].key] = document.getElementById('talkInput').value.trim();
+    talkIdx++;
+    renderTalk();
+  });
+  const backBtn = document.getElementById('talkBack');
+  if (backBtn) backBtn.addEventListener('click', () => {
+    talkAnswers[TALK_STEPS[talkIdx].key] = document.getElementById('talkInput').value.trim();
+    talkIdx--;
+    renderTalk();
+  });
+}
+
+function renderTalkRecap() {
+  const a = talkAnswers;
+  talkCard.innerHTML =
+    '<p class="talk-step-label">The walk-through</p>' +
+    (a.worry ? '<div class="talk-recap"><b>The worry</b>' + escapeHTML(a.worry) + '</div>' : '') +
+    (a.worst ? '<div class="talk-recap"><b>The catastrophe your brain pitched</b>' + escapeHTML(a.worst) + '</div>' : '') +
+    (a.likely ? '<div class="talk-recap"><b>What will probably actually happen</b>' + escapeHTML(a.likely) + '</div>' : '') +
+    (a.friend ? '<div class="talk-recap"><b>What you\u2019d tell your best friend</b>' + escapeHTML(a.friend) + '</div>' : '') +
+    '<p class="talk-hint" style="margin-top:16px;">That last one? That advice was for you. You already knew what you needed to hear. \uD83D\uDC9C</p>' +
+    '<div class="talk-actions">' +
+    '<button class="pill-btn ghost" id="talkRestart">Walk through another worry</button>' +
+    '<button class="pill-btn" data-go="home">Back to the corner \uD83C\uDF80</button>' +
+    '</div>';
+  document.getElementById('talkRestart').addEventListener('click', () => {
+    talkIdx = 0; talkAnswers = {}; renderTalk();
+  });
+  talkCard.querySelector('[data-go="home"]').addEventListener('click', () => goView('home'));
+}
+renderTalk();
+
+document.querySelectorAll('[data-go="talk"]').forEach(b => b.addEventListener('click', () => {
+  talkIdx = 0; talkAnswers = {}; renderTalk();
+}));
 </script>
 </body>
 </html>
